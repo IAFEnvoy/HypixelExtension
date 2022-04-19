@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.7",
+  "package": "iafenvoy.hypextension.Mixins",
+  "compatibilityLevel": "JAVA_8",
+  "client": [
+    "PlayerEntityMixin",
+    "ChatHudMixin",
+    "ChatScreenMixin",
+    "KeyboardInputMixin",
+    "ExplosionMixin",
+    "InGameHudMixin",
+    "ChunkBuilder_BuiltChunkMixin",
+    "LivingEntityMixin",
+    "TNTEntityMixin",
+    "WorldRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
