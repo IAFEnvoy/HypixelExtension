@@ -2,7 +2,7 @@ package iafenvoy.hypextension.FastGameMenu;
 
 import java.util.List;
 
-import iafenvoy.hypextension.Utils.PlayerUtil;
+import iafenvoy.hypextension.Utils.ClientUtil;
 import net.minecraft.text.TranslatableText;
 
 public class MiniGame {
@@ -41,6 +41,6 @@ public class MiniGame {
   }
 
   public void sendCommand() {
-    PlayerUtil.sendMessage(this.commamd);
+    ClientUtil.sendMessage(this.commamd);
   }
 }

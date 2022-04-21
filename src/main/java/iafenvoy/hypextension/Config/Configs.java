@@ -45,6 +45,7 @@ public class Configs implements IConfigHandler {
     public static final ConfigBoolean removeOwnPotionEffects = new NativeBoolean("removeOwnPotionEffects", false);
     public static final ConfigBoolean tntCountDown = new NativeBoolean("tntCountDown", false);
     public static final ConfigBoolean fastGameMenu = new NativeBoolean("fastGameMenu", false);
+    public static final ConfigBoolean renderOwnNameTag = new NativeBoolean("renderOwnNameTag", false);// TODO
 
     public static final ConfigBoolean copyChatButton = new NativeBoolean("copyChatButton", false);// TODO
     public static final ConfigBoolean headLevel = new NativeBoolean("headLevel", false);// TODO
@@ -69,6 +70,7 @@ public class Configs implements IConfigHandler {
       Category.Options.add(removeOwnPotionEffects);
       Category.Options.add(tntCountDown);
       Category.Options.add(fastGameMenu);
+      Category.Options.add(renderOwnNameTag);
     }
   }
 
@@ -77,11 +79,18 @@ public class Configs implements IConfigHandler {
         0.0F, 128F, false);
     public static final ConfigString timeStamp = new NativeString("timeStamp", "[HH:mm:ss]");
     public static final ConfigColor chatBackgroundColor = new NativeColor("chatBackgroundColor", "#80000000");
+    
+    public static final ConfigDouble x=new NativeDouble("x", 0, -180, 180, true);
+    public static final ConfigDouble y=new NativeDouble("y", 0, -180, 180, true);
+    public static final ConfigDouble z=new NativeDouble("z", 0, -180, 180, true);
 
     public static void Init() {
       Category.Settings.add(gammaOverrideValue);
       Category.Settings.add(timeStamp);
       Category.Settings.add(chatBackgroundColor);
+      // Category.Settings.add(x);
+      // Category.Settings.add(y);
+      // Category.Settings.add(z);
     }
   }
 

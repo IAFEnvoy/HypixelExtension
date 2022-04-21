@@ -13,7 +13,8 @@
     "ChunkBuilder_BuiltChunkMixin",
     "LivingEntityMixin",
     "TNTEntityMixin",
-    "WorldRendererMixin"
+    "WorldRendererMixin",
+    "PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

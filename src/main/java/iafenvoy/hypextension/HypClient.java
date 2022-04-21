@@ -16,14 +16,16 @@ import net.fabricmc.loader.api.FabricLoader;
 @Environment(EnvType.CLIENT)
 public class HypClient implements ClientModInitializer {
   public static final String MOD_ID = "hypextension";
-  public static Logger logger=LogManager.getLogger();
+  public static Logger logger = LogManager.getLogger();
 
   @Override
   public void onInitializeClient() {
-    if(!FabricLoader.getInstance().isModLoaded("malilib")){
+    if (!FabricLoader.getInstance().isModLoaded("malilib")) {
       logger.fatal("Malilib is not loaded, please download it.");
       return;
     }
+
+    logger.info("[Hypixel Extension] Initializing...");
 
     ConfigManager.getInstance().registerConfigHandler(MOD_ID, new Configs());
     Configs.loadFile();

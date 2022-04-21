@@ -23,5 +23,7 @@
   "config.hypextension.renderEdgeChunks":"绘制边缘区块",
   "config.hypextension.removeOwnPotionEffects":"移除自身第一视角效果粒子",
   "config.hypextension.tntCountDown":"TNT爆炸倒计时",
-  "config.hypextension.fastGameMenu":"快速游戏菜单"
+  "config.hypextension.fastGameMenu":"快速游戏菜单",
+  "config.hypextension.renderOwnNameTag":"自己头顶显示名字",
+  "config.hypextension.fastGameMenuKey":"打开快速游戏菜单"
 }
