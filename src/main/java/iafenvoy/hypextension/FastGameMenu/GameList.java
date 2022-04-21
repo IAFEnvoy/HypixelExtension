@@ -15,7 +15,8 @@ import iafenvoy.hypextension.Utils.FileUtils;
 public class GameList {
   public static final GameList INSTANCE = new GameList();
   //back button object
-  public static final MiniGame BACK = new MiniGame("back_to_parent", "", new ArrayList<>());
+  public static final MiniGame BACK = new MiniGame(" < Back", "", new ArrayList<>());
+  public static final MiniGame LOBBY = new MiniGame("Lobby", "", new ArrayList<>());
 
   public final List<MiniGame> DATA;
 

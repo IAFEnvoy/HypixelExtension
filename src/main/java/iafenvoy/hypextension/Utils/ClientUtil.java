@@ -8,8 +8,11 @@ import net.minecraft.text.Text;
 public class ClientUtil {
   private static final MinecraftClient client = MinecraftClient.getInstance();
 
-  public static void sendMessage(String message) {
-    client.player.sendChatMessage(message);
+  public static void sendMessage(String message, boolean sendToServer) {
+    if (sendToServer)
+      client.player.sendChatMessage(message);
+    else
+      client.player.sendMessage(Text.of(message), true);
   }
 
   public static Text getPlayerName() {

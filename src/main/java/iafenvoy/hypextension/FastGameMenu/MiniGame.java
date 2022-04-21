@@ -41,6 +41,6 @@ public class MiniGame {
   }
 
   public void sendCommand() {
-    ClientUtil.sendMessage(this.commamd);
+    ClientUtil.sendMessage(this.commamd, true);
   }
 }

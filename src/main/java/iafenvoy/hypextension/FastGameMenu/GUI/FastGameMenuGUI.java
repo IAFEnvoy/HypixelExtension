@@ -25,6 +25,8 @@ public class FastGameMenuGUI extends GuiBase {
     this.parent = parent;
     if (parent != null && !this.games.contains(GameList.BACK))
       this.games.add(0, GameList.BACK);
+    // if (parent != null && !this.games.contains(GameList.LOBBY))
+    //   this.games.add(0, GameList.LOBBY);
   }
 
   @Override
@@ -37,7 +39,7 @@ public class FastGameMenuGUI extends GuiBase {
   @Override
   protected void drawTitle(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
     this.drawString(matrixStack, this.getTitleString(), 20, 10, -1);
- }
+  }
 
   private void createButton(int locateX, int locateY, MiniGame game) {
     int height = ButtonIcon.getByName(game.getTranslateKey()) == null ? 20 : 40;
@@ -57,7 +59,7 @@ public class FastGameMenuGUI extends GuiBase {
 
     @Override
     public void actionPerformedWithButton(ButtonBase button, int mouseButton) {
-      if (game.getTranslateKey().equals(GameList.BACK.getTranslateKey())) {
+      if (game == GameList.BACK) {
         GuiBase.openGui(parent);
       } else if (game.getModes().size() == 0) {
         game.sendCommand();

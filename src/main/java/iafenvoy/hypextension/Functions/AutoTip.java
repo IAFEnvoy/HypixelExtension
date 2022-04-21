@@ -4,16 +4,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import iafenvoy.hypextension.Config.Configs.Options;
-import net.minecraft.client.MinecraftClient;
+import iafenvoy.hypextension.Utils.ClientUtil;
 
 public class AutoTip {
-  private static final MinecraftClient client = MinecraftClient.getInstance();
   private static Timer timer = new Timer("Auto Tip");
   private static TimerTask task = new TimerTask() {
     public void run() {
       try {
         if (Options.autoTip.getBooleanValue())
-          client.player.sendChatMessage("/tip all");
+          ClientUtil.sendMessage("/tip all", true);
       } catch (Exception e) {
       }
     }
