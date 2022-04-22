@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.Slice;
 
-import iafenvoy.hypextension.Config.Configs.Options;
+import iafenvoy.hypextension.Config.Configs;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.world.explosion.Explosion;
@@ -14,7 +14,7 @@ import net.minecraft.world.explosion.Explosion;
 public abstract class ExplosionMixin {
   @Redirect(method = "affectWorld", slice = @Slice(from = @At("HEAD"), to = @At(value = "FIELD", target = "Lnet/minecraft/world/explosion/Explosion;affectedBlocks:Ljava/util/List;")), at = @At(value = "FIELD", target = "Lnet/minecraft/particle/ParticleTypes;EXPLOSION_EMITTER:Lnet/minecraft/particle/DefaultParticleType;"))
   private DefaultParticleType redirectSpawnParticles() {
-    if (Options.reduceExplosionParticles.getBooleanValue())
+    if (Configs.reduceExplosionParticles.getBooleanValue())
       return ParticleTypes.EXPLOSION;
     return ParticleTypes.EXPLOSION_EMITTER;
   }

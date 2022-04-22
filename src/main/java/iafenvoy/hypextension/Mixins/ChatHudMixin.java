@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-import iafenvoy.hypextension.Config.Configs.Options;
+import iafenvoy.hypextension.Config.Configs;
 import iafenvoy.hypextension.Functions.AutoFriend;
 import iafenvoy.hypextension.Functions.AutoGG;
 import iafenvoy.hypextension.Utils.MiscUtils;
@@ -18,11 +18,11 @@ import net.minecraft.text.Text;
 public abstract class ChatHudMixin extends DrawableHelper {
   @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;I)V", at = @At("HEAD"), argsOnly = true)
   private Text addMessageHandler(Text componentIn) {
-    if (Options.autoGG.getBooleanValue())
+    if (Configs.autoGG.getBooleanValue())
       AutoGG.checkMessage(componentIn.getString());
-    if (Options.autoFriend.getBooleanValue())
+    if (Configs.autoFriend.getBooleanValue())
       AutoFriend.checkMessage(componentIn.getString());
-    if (Options.chatTimeStamp.getBooleanValue()) {
+    if (Configs.chatTimeStamp.getBooleanValue()) {
       LiteralText newComponent = new LiteralText(MiscUtils.getChatTimestamp() + " ");
       newComponent.append(componentIn);
       return newComponent;
@@ -33,7 +33,7 @@ public abstract class ChatHudMixin extends DrawableHelper {
   @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;fill(Lnet/minecraft/client/util/math/MatrixStack;IIIII)V", ordinal = 0))
   private void overrideChatBackgroundColor(net.minecraft.client.util.math.MatrixStack matrixStack, int left, int top,
       int right, int bottom, int color) {
-    if (Options.chatBackgroundOverride.getBooleanValue())
+    if (Configs.chatBackgroundOverride.getBooleanValue())
       color = MiscUtils.getChatBackgroundColor(color);
     fill(matrixStack, left, top, right, bottom, color);
   }

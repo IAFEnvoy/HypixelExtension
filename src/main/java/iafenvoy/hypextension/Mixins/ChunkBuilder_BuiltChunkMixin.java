@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import iafenvoy.hypextension.Config.Configs.Options;
+import iafenvoy.hypextension.Config.Configs;
 import net.minecraft.client.render.chunk.ChunkBuilder;
 import net.minecraft.util.math.BlockPos;
 
@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 public abstract class ChunkBuilder_BuiltChunkMixin {
   @Inject(method = "isChunkNonEmpty", at = @At("HEAD"), cancellable = true)
   private void allowEdgeChunksToRender(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-    if (Options.renderEdgeChunks.getBooleanValue())
+    if (Configs.renderEdgeChunks.getBooleanValue())
       cir.setReturnValue(true);
   }
 }

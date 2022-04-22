@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import iafenvoy.hypextension.Config.Configs.Options;
+import iafenvoy.hypextension.Config.Configs;
 import iafenvoy.hypextension.Render.TNTCountdownRenderer;
 
 @Mixin(WorldRenderer.class)
@@ -25,7 +25,7 @@ public class WorldRendererMixin {
   @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/WorldRenderer;checkEmpty(Lnet/minecraft/client/util/math/MatrixStack;)V", ordinal = 0))
   private void render(MatrixStack matrices, float tickDelta, long limitTime, boolean renderBlockOutline, Camera camera,
       GameRenderer gameRenderer, LightmapTextureManager lightmapTextureManager, Matrix4f projection, CallbackInfo ci) {
-    if (Options.tntCountDown.getBooleanValue())
+    if (Configs.tntCountDown.getBooleanValue())
       TNTCountdownRenderer.render(matrices, tickDelta, camera, projection, this.capturedFrustum);
   }
 }

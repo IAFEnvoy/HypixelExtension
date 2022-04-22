@@ -3,7 +3,7 @@ package iafenvoy.hypextension.Functions;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import iafenvoy.hypextension.Config.Configs.Options;
+import iafenvoy.hypextension.Config.Configs;
 import iafenvoy.hypextension.Utils.ClientUtil;
 
 public class AutoTip {
@@ -11,7 +11,7 @@ public class AutoTip {
   private static TimerTask task = new TimerTask() {
     public void run() {
       try {
-        if (Options.autoTip.getBooleanValue())
+        if (Configs.autoTip.getBooleanValue())
           ClientUtil.sendMessage("/tip all", true);
       } catch (Exception e) {
       }

@@ -74,8 +74,8 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler {
 
   @Override
   public void addKeysToMap(IKeybindManager manager) {
-    manager.addKeybindToMap(Configs.Hotkeys.menuOpenKey.getKeybind());
-    manager.addKeybindToMap(Configs.Hotkeys.fastGameMenuKey.getKeybind());
+    manager.addKeybindToMap(Configs.menuOpenKey.getKeybind());
+    manager.addKeybindToMap(Configs.fastGameMenuKey.getKeybind());
     for (ConfigHotkey hotkey : HotkeyBoolean.hotkeyInstance)
       manager.addKeybindToMap(hotkey.getKeybind());
   }

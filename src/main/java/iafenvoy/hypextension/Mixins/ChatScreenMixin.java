@@ -11,8 +11,7 @@ import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import iafenvoy.hypextension.Config.Configs.Options;
-import iafenvoy.hypextension.Config.Configs.Settings;
+import iafenvoy.hypextension.Config.Configs;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 
@@ -27,13 +26,13 @@ public abstract class ChatScreenMixin {
 
   @Inject(method = "removed", at = @At("HEAD"))
   private void storeChatText(CallbackInfo ci) {
-    if (Options.saveChatMessage.getBooleanValue())
+    if (Configs.saveChatMessage.getBooleanValue())
       lastChatText = this.chatField.getText();
   }
 
   @Inject(method = "<init>(Ljava/lang/String;)V", at = @At("RETURN"))
   private void restoreText(String defaultText, CallbackInfo ci) {
-    if (Options.saveChatMessage.getBooleanValue())
+    if (Configs.saveChatMessage.getBooleanValue())
       this.originalChatText = lastChatText;
   }
 
@@ -44,8 +43,8 @@ public abstract class ChatScreenMixin {
 
   @ModifyConstant(method = "render", constant = @Constant(intValue = Integer.MIN_VALUE))
   private int overrideChatBackgroundColor(int original) {
-    if (Options.chatBackgroundOverride.getBooleanValue())
-      return Settings.chatBackgroundColor.getIntegerValue();
+    if (Configs.chatBackgroundOverride.getBooleanValue())
+      return Configs.chatBackgroundColor.getIntegerValue();
     return original;
   }
 }

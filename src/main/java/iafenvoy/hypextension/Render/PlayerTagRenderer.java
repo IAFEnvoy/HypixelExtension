@@ -31,7 +31,7 @@ public class PlayerTagRenderer<T extends LivingEntity, M extends EntityModel<T>>
   @Override
   public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, T entity,
       float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
-    if (!Configs.Options.renderOwnNameTag.getBooleanValue())
+    if (!Configs.renderOwnNameTag.getBooleanValue())
       return;
     if (entity.isSpectator() || entity.isInvisible() || !entity.isAlive())
       return;

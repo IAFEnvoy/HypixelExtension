@@ -59,7 +59,8 @@ public class ConfigGUI extends GuiConfigsBase {
   public static enum Category {
     Hotkeys("hypextension.hotkeys"),
     Options("hypextension.options"),
-    Settings("hypextension.settings");
+    Settings("hypextension.settings"),
+    ChatFilter("hypextension.chatfilter"),;
 
     private final String key;
     private final List<IConfigBase> configs = new ArrayList<>();

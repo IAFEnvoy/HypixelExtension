@@ -8,14 +8,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.input.KeyboardInput;
-import iafenvoy.hypextension.Config.Configs.Options;
+import iafenvoy.hypextension.Config.Configs;
 import iafenvoy.hypextension.Utils.InputHandler;
 
 @Mixin(KeyboardInput.class)
 public abstract class KeyboardInputMixin extends Input {
   @Inject(method = "tick(Z)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/input/KeyboardInput;sneaking:Z", ordinal = 0, shift = Shift.AFTER, opcode = Opcodes.PUTFIELD))
   private void customMovement(boolean val1, CallbackInfo ci) {
-    if (Options.movementKeysLast.getBooleanValue())
+    if (Configs.movementKeysLast.getBooleanValue())
       InputHandler.getInstance().handleMovementKeys(this);
   }
 }

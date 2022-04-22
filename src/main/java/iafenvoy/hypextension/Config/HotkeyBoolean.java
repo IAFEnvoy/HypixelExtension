@@ -36,9 +36,6 @@ public class HotkeyBoolean {
     this.hotkey = new NativeHotkey(keyname + ".hotkey", defaultHotkey);
     hotkeyInstance.add(this.hotkey);
     this.hotkey.getKeybind().setCallback(new HotKeyHandler());
-  }
-
-  public void register() {
     Category.Hotkeys.add(this.hotkey);
     Category.Options.add(bool);
   }
