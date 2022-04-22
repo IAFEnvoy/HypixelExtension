@@ -18,59 +18,66 @@ public class Configs implements IConfigHandler {
   private static final File CONFIG_DIR = new File("./config");
 
   public static class Hotkeys {
-    public static final ConfigHotkey menuOpenKey = new NativeHotkey("menuOpenKey", "F9");
-    public static final ConfigHotkey fastGameMenuKey = new NativeHotkey("fastGameMenuKey", "R");
+    public static final ConfigHotkey menuOpenKey = Category.Hotkeys.add(new NativeHotkey("menuOpenKey", "F6"));
+    public static final ConfigHotkey fastGameMenuKey = Category.Hotkeys.add(new NativeHotkey("fastGameMenuKey", "R"));
 
     public static void Init() {
-      Category.Hotkeys.add(menuOpenKey);
       menuOpenKey.getKeybind().setCallback(new HotKeyHandler());
-      Category.Hotkeys.add(fastGameMenuKey);
       fastGameMenuKey.getKeybind().setCallback(new HotKeyHandler());
     }
   }
 
   public static class Options {
-    public static final ConfigBoolean gammaOverride = new NativeBoolean("gammaOverride", false);
-    public static final ConfigBoolean autoTip = new NativeBoolean("autoTip", false);
-    public static final ConfigBoolean autoGG = new NativeBoolean("autoGG", false);
-    public static final ConfigBoolean sneak_1_15_2 = new NativeBoolean("sneak_1_15_2", false);// TODO: Buggy.
-    public static final ConfigBoolean chatTimeStamp = new NativeBoolean("chatTimeStamp", false);
-    public static final ConfigBoolean chatBackgroundOverride = new NativeBoolean("chatBackgroundOverride", false);
-    public static final ConfigBoolean saveChatMessage = new NativeBoolean("saveChatMessage", false);// TODO: Buggy with '/'
-    public static final ConfigBoolean reduceExplosionParticles = new NativeBoolean("reduceExplosionParticles", false);
-    public static final ConfigBoolean movementKeysLast = new NativeBoolean("movementKeysLast", false);
-    public static final ConfigBoolean f3Cursor = new NativeBoolean("f3Cursor", false);
-    public static final ConfigBoolean playerListAlwaysOn = new NativeBoolean("playerListAlwaysOn", false);
-    public static final ConfigBoolean renderEdgeChunks = new NativeBoolean("renderEdgeChunks", false);
-    public static final ConfigBoolean removeOwnPotionEffects = new NativeBoolean("removeOwnPotionEffects", false);
-    public static final ConfigBoolean tntCountDown = new NativeBoolean("tntCountDown", false);
-    public static final ConfigBoolean fastGameMenu = new NativeBoolean("fastGameMenu", false);
-    public static final ConfigBoolean renderOwnNameTag = new NativeBoolean("renderOwnNameTag", false);// TODO
+    public static final HotkeyBoolean gammaOverride = new HotkeyBoolean("gammaOverride")
+        .setCallback(new SettingCallback());;
+    public static final HotkeyBoolean autoTip = new HotkeyBoolean("autoTip");
+    public static final HotkeyBoolean autoGG = new HotkeyBoolean("autoGG");
+    public static final HotkeyBoolean sneak_1_15_2 = new HotkeyBoolean("sneak_1_15_2");// TODO: Buggy.
+    public static final HotkeyBoolean chatTimeStamp = new HotkeyBoolean("chatTimeStamp");
+    public static final HotkeyBoolean chatBackgroundOverride = new HotkeyBoolean("chatBackgroundOverride");
+    public static final HotkeyBoolean saveChatMessage = new HotkeyBoolean("saveChatMessage");// TODO: Buggy with '/'
+    public static final HotkeyBoolean reduceExplosionParticles = new HotkeyBoolean("reduceExplosionParticles");
+    public static final HotkeyBoolean movementKeysLast = new HotkeyBoolean("movementKeysLast");
+    public static final HotkeyBoolean f3Cursor = new HotkeyBoolean("f3Cursor");
+    public static final HotkeyBoolean playerListAlwaysOn = new HotkeyBoolean("playerListAlwaysOn");
+    public static final HotkeyBoolean renderEdgeChunks = new HotkeyBoolean("renderEdgeChunks");
+    public static final HotkeyBoolean removeOwnPotionEffects = new HotkeyBoolean("removeOwnPotionEffects");
+    public static final HotkeyBoolean tntCountDown = new HotkeyBoolean("tntCountDown");
+    public static final HotkeyBoolean fastGameMenu = new HotkeyBoolean("fastGameMenu");
+    public static final HotkeyBoolean renderOwnNameTag = new HotkeyBoolean("renderOwnNameTag");
 
-    public static final ConfigBoolean copyChatButton = new NativeBoolean("copyChatButton", false);// TODO
-    public static final ConfigBoolean headLevel = new NativeBoolean("headLevel", false);// TODO
-    public static final ConfigBoolean chatFilter = new NativeBoolean("chatFilter", false);// TODO
-    public static final ConfigBoolean timer = new NativeBoolean("timer", false);// TODO
-    public static final ConfigBoolean autoFriend = new NativeBoolean("autoFriend", false);// TODO
+    // public static final HotkeyBoolean copyChatButton = new
+    // HotkeyBoolean("copyChatButton");// TODO
+    // public static final HotkeyBoolean headLevel = new
+    // HotkeyBoolean("headLevel");// TODO
+    // public static final HotkeyBoolean chatFilter = new
+    // HotkeyBoolean("chatFilter");// TODO
+    // public static final HotkeyBoolean timer = new HotkeyBoolean("timer");// TODO
+    // public static final HotkeyBoolean autoFriend = new
+    // HotkeyBoolean("autoFriend");// TODO
 
     public static void Init() {
-      Category.Options.add(gammaOverride);
-      gammaOverride.setValueChangeCallback(new SettingCallback());
-      Category.Options.add(autoTip);
-      Category.Options.add(autoGG);
-      Category.Options.add(sneak_1_15_2);
-      Category.Options.add(chatTimeStamp);
-      Category.Options.add(chatBackgroundOverride);
-      Category.Options.add(saveChatMessage);
-      Category.Options.add(reduceExplosionParticles);
-      Category.Options.add(movementKeysLast);
-      Category.Options.add(f3Cursor);
-      Category.Options.add(playerListAlwaysOn);
-      Category.Options.add(renderEdgeChunks);
-      Category.Options.add(removeOwnPotionEffects);
-      Category.Options.add(tntCountDown);
-      Category.Options.add(fastGameMenu);
-      Category.Options.add(renderOwnNameTag);
+      gammaOverride.register();
+      autoTip.register();
+      autoGG.register();
+      sneak_1_15_2.register();
+      chatTimeStamp.register();
+      chatBackgroundOverride.register();
+      saveChatMessage.register();
+      reduceExplosionParticles.register();
+      movementKeysLast.register();
+      f3Cursor.register();
+      playerListAlwaysOn.register();
+      renderEdgeChunks.register();
+      removeOwnPotionEffects.register();
+      tntCountDown.register();
+      fastGameMenu.register();
+      renderOwnNameTag.register();
+      // copyChatButton.register();
+      // headLevel.register();
+      // chatFilter.register();
+      // timer.register();
+      // autoFriend.register();
     }
   }
 
@@ -79,10 +86,10 @@ public class Configs implements IConfigHandler {
         0.0F, 128F, false);
     public static final ConfigString timeStamp = new NativeString("timeStamp", "[HH:mm:ss]");
     public static final ConfigColor chatBackgroundColor = new NativeColor("chatBackgroundColor", "#80000000");
-    
-    public static final ConfigDouble x=new NativeDouble("x", 0, -180, 180, true);
-    public static final ConfigDouble y=new NativeDouble("y", 0, -180, 180, true);
-    public static final ConfigDouble z=new NativeDouble("z", 0, -180, 180, true);
+
+    public static final ConfigDouble x = new NativeDouble("x", 0, -180, 180, true);
+    public static final ConfigDouble y = new NativeDouble("y", 0, -180, 180, true);
+    public static final ConfigDouble z = new NativeDouble("z", 0, -180, 180, true);
 
     public static void Init() {
       Category.Settings.add(gammaOverrideValue);
@@ -95,8 +102,8 @@ public class Configs implements IConfigHandler {
   }
 
   public static void Init() {
-    Options.Init();
     Hotkeys.Init();
+    Options.Init();
     Settings.Init();
   }
 
@@ -109,7 +116,7 @@ public class Configs implements IConfigHandler {
     File settingFile = new File(FILE_PATH);
     if (settingFile.isFile() && settingFile.exists()) {
       JsonElement jsonElement = JsonUtils.parseJsonFile(settingFile);
-      if (jsonElement instanceof JsonObject) 
+      if (jsonElement instanceof JsonObject)
         for (Category category : Category.values())
           ConfigUtils.readConfigBase((JsonObject) jsonElement, category.name(), category.getConfigs());
     }

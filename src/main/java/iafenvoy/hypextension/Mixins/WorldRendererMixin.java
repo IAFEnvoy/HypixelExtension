@@ -28,5 +28,4 @@ public class WorldRendererMixin {
     if (Options.tntCountDown.getBooleanValue())
       TNTCountdownRenderer.render(matrices, tickDelta, camera, projection, this.capturedFrustum);
   }
-
 }

@@ -3,14 +3,15 @@ package iafenvoy.hypextension.Utils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.option.GameOptions;
+import fi.dy.masa.malilib.config.options.ConfigHotkey;
 import fi.dy.masa.malilib.hotkeys.IKeybindManager;
 import fi.dy.masa.malilib.hotkeys.IKeybindProvider;
 import fi.dy.masa.malilib.hotkeys.IKeyboardInputHandler;
-import fi.dy.masa.malilib.hotkeys.IMouseInputHandler;
 import fi.dy.masa.malilib.util.GuiUtils;
 import iafenvoy.hypextension.Config.Configs;
+import iafenvoy.hypextension.Config.HotkeyBoolean;
 
-public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IMouseInputHandler {
+public class InputHandler implements IKeybindProvider, IKeyboardInputHandler {
   private static final MinecraftClient client = MinecraftClient.getInstance();
   private static final InputHandler INSTANCE = new InputHandler();
   private LeftRight lastSidewaysInput = LeftRight.NONE;
@@ -75,6 +76,8 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler, IM
   public void addKeysToMap(IKeybindManager manager) {
     manager.addKeybindToMap(Configs.Hotkeys.menuOpenKey.getKeybind());
     manager.addKeybindToMap(Configs.Hotkeys.fastGameMenuKey.getKeybind());
+    for (ConfigHotkey hotkey : HotkeyBoolean.hotkeyInstance)
+      manager.addKeybindToMap(hotkey.getKeybind());
   }
 
   public enum LeftRight {

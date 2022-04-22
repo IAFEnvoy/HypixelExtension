@@ -1,11 +1,13 @@
 package iafenvoy.hypextension.FastGameMenu;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import iafenvoy.hypextension.Utils.ClientUtil;
 import net.minecraft.text.TranslatableText;
 
 public class MiniGame {
+  public static final List<TranslatableText> gameName = new ArrayList<>();
   private final String translateKey;// name in json file
   private final String commamd;// key in json file
   private final List<MiniGame> modes;// mode list in json file
@@ -14,6 +16,7 @@ public class MiniGame {
     this.translateKey = translateKey;
     this.commamd = commamd.contains("/") ? commamd : "/play " + commamd.toLowerCase();
     this.modes = modes;
+    gameName.add(new TranslatableText(translateKey));
   }
 
   public String getTranslateKey() {
@@ -42,5 +45,13 @@ public class MiniGame {
 
   public void sendCommand() {
     ClientUtil.sendMessage(this.commamd, true);
+  }
+
+  public static boolean containGameName(String s) {
+    s = s.replace(" ", "").toLowerCase();
+    for (TranslatableText t : gameName)
+      if (s.contains(t.getString().replace(" ", "").toLowerCase()))
+        return true;
+    return false;
   }
 }

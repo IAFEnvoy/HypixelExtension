@@ -69,7 +69,7 @@ public class ConfigGUI extends GuiConfigsBase {
       configs = new ArrayList<>();
     }
 
-    protected <T extends IConfigBase> T add(T config) {
+    public <T extends IConfigBase> T add(T config) {
       this.configs.add(config);
       return config;
     }
