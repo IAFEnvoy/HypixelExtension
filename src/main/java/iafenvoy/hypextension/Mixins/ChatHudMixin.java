@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import iafenvoy.hypextension.Config.Configs.Options;
+import iafenvoy.hypextension.Functions.AutoFriend;
 import iafenvoy.hypextension.Functions.AutoGG;
 import iafenvoy.hypextension.Utils.MiscUtils;
 import net.minecraft.client.gui.DrawableHelper;
@@ -19,6 +20,8 @@ public abstract class ChatHudMixin extends DrawableHelper {
   private Text addMessageHandler(Text componentIn) {
     if (Options.autoGG.getBooleanValue())
       AutoGG.checkMessage(componentIn.getString());
+    if (Options.autoFriend.getBooleanValue())
+      AutoFriend.checkMessage(componentIn.getString());
     if (Options.chatTimeStamp.getBooleanValue()) {
       LiteralText newComponent = new LiteralText(MiscUtils.getChatTimestamp() + " ");
       newComponent.append(componentIn);

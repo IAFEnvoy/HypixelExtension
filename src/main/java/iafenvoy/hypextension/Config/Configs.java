@@ -45,6 +45,7 @@ public class Configs implements IConfigHandler {
     public static final HotkeyBoolean tntCountDown = new HotkeyBoolean("tntCountDown");
     public static final HotkeyBoolean fastGameMenu = new HotkeyBoolean("fastGameMenu");
     public static final HotkeyBoolean renderOwnNameTag = new HotkeyBoolean("renderOwnNameTag");
+    public static final HotkeyBoolean autoFriend = new HotkeyBoolean("autoFriend");
 
     // public static final HotkeyBoolean copyChatButton = new
     // HotkeyBoolean("copyChatButton");// TODO
@@ -53,8 +54,6 @@ public class Configs implements IConfigHandler {
     // public static final HotkeyBoolean chatFilter = new
     // HotkeyBoolean("chatFilter");// TODO
     // public static final HotkeyBoolean timer = new HotkeyBoolean("timer");// TODO
-    // public static final HotkeyBoolean autoFriend = new
-    // HotkeyBoolean("autoFriend");// TODO
 
     public static void Init() {
       gammaOverride.register();
@@ -73,11 +72,11 @@ public class Configs implements IConfigHandler {
       tntCountDown.register();
       fastGameMenu.register();
       renderOwnNameTag.register();
+      autoFriend.register();
       // copyChatButton.register();
       // headLevel.register();
       // chatFilter.register();
       // timer.register();
-      // autoFriend.register();
     }
   }
 

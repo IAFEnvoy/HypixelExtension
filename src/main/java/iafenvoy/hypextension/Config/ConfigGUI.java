@@ -62,11 +62,10 @@ public class ConfigGUI extends GuiConfigsBase {
     Settings("hypextension.settings");
 
     private final String key;
-    private final List<IConfigBase> configs;
+    private final List<IConfigBase> configs = new ArrayList<>();
 
     Category(String key) {
       this.key = key;
-      configs = new ArrayList<>();
     }
 
     public <T extends IConfigBase> T add(T config) {

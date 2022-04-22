@@ -8,7 +8,7 @@
   "config.hypextension.gammaOverrideKey":"覆写Gamma",
   "config.hypextension.gammaOverride":"覆写Gamma",
   "config.hypextension.autoTip":"自动打赏",
-  "config.hypextension.autoGG":"自动GG（暂只支持bw和mm）",
+  "config.hypextension.autoGG":"自动GG（基本全支持）",
   "config.hypextension.sneak_1_15_2":"旧版潜行（暂未完成）",
   "config.hypextension.chatTimeStamp":"聊天时间戳",
   "config.hypextension.chatBackgroundOverride":"聊天框背景颜色覆写",
@@ -25,5 +25,6 @@
   "config.hypextension.tntCountDown":"TNT爆炸倒计时",
   "config.hypextension.fastGameMenu":"快速游戏菜单",
   "config.hypextension.renderOwnNameTag":"自己头顶显示名字",
-  "config.hypextension.fastGameMenuKey":"打开快速游戏菜单"
+  "config.hypextension.fastGameMenuKey":"打开快速游戏菜单",
+  "config.hypextension.autoFriend":"自动加好友"
 }
