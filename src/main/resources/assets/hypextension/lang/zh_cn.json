@@ -3,6 +3,7 @@
   "hypextension.hotkeys":"热键",
   "hypextension.options":"选项",
   "hypextension.settings":"设置",
+  "hypextension.chatfilter":"聊天过滤",
   "hypextension.fastgamemenu.title":"快速游戏菜单",
   "config.hypextension.menuOpenKey":"打开菜单",
   "config.hypextension.gammaOverrideKey":"覆写Gamma",
@@ -26,5 +27,12 @@
   "config.hypextension.fastGameMenu":"快速游戏菜单",
   "config.hypextension.renderOwnNameTag":"自己头顶显示名字",
   "config.hypextension.fastGameMenuKey":"打开快速游戏菜单",
-  "config.hypextension.autoFriend":"自动加好友"
+  "config.hypextension.autoFriend":"自动加好友",
+  "config.hypextension.chatFilter":"聊天消息过滤",
+  "config.hypextension.blockNormal":"拦截普通聊天",
+  "config.hypextension.blockTeam":"拦截游戏内团队聊天",
+  "config.hypextension.blockGuild":"拦截工会聊天",
+  "config.hypextension.blockParty":"拦截组队聊天",
+  "config.hypextension.blockShout":"拦截游戏内喊话聊天",
+  "config.hypextension.blockSpectator":"拦截旁观者聊天"
 }
