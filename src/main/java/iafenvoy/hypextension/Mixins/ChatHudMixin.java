@@ -21,6 +21,10 @@ import net.minecraft.text.Text;
 public abstract class ChatHudMixin extends DrawableHelper {
   @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;I)V", at = @At("HEAD"), argsOnly = true)
   private Text addMessageHandler(Text componentIn) {
+    if (Configs.autoGG.getBooleanValue())
+      AutoGG.checkMessage(componentIn.getString());
+    if (Configs.autoFriend.getBooleanValue())
+      AutoFriend.checkMessage(componentIn.getString());
     if (Configs.chatTimeStamp.getBooleanValue()) {
       LiteralText newComponent = new LiteralText(MiscUtils.getChatTimestamp() + " ");
       newComponent.append(componentIn);
@@ -35,10 +39,6 @@ public abstract class ChatHudMixin extends DrawableHelper {
       System.out.println("Chat Blocked !");
       ret.cancel();
     }
-    if (Configs.autoGG.getBooleanValue())
-      AutoGG.checkMessage(message.getString());
-    if (Configs.autoFriend.getBooleanValue())
-      AutoFriend.checkMessage(message.getString());
   }
 
   @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/ChatHud;fill(Lnet/minecraft/client/util/math/MatrixStack;IIIII)V", ordinal = 0))

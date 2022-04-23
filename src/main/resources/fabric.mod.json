@@ -1,35 +1,35 @@
 {
-    "schemaVersion": 1,
-    "id": "hypextension",
-    "version": "1.0.0",
-
-    "name": "Hypixel Extension",
-    "description": "This is an example description! Tell everyone what your mod is about!",
-    "authors": [
-        "IAFEnvoy",
-        "ThunderEnvoy"
+  "schemaVersion": 1,
+  "id": "hypextension",
+  "version": "1.0.0",
+  "name": "Hypixel Extension",
+  "description": "Hypixel extension mod with a variety of functions. Press F6 in game to open menu.",
+  "authors": [
+    "IAFEnvoy"
+  ],
+  "license": "GPL-3.0",
+  "contact": {
+    "sources": "https://github.com/IAFEnvoy/HypixelExtension"
+  },
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "iafenvoy.hypextension.HypClient"
     ],
-    "license": "CC0-1.0",
-    "icon": "assets/hypextension/icon.png",
-
-    "environment": "*",
-    "entrypoints": {
-        "client": [
-            "iafenvoy.hypextension.HypClient"
-        ]
-    },
-
-    "mixins":[
-      "hypextension.mixins.json"
-    ],
-
-    "depends": {
-        "fabricloader": ">=0.11.3",
-        "fabric": "*",
-        "minecraft": "1.16.x",
-        "java": ">=8"
-    },
-    "suggests": {
-        "another-mod": "*"
-    }
+    "modmenu": [
+      "iafenvoy.hypextension.Compat.ModMenu"
+    ]
+  },
+  "mixins": [
+    "hypextension.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.16.x",
+    "java": ">=8"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
 }

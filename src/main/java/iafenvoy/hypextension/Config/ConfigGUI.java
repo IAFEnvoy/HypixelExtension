@@ -13,10 +13,9 @@ import com.google.common.collect.ImmutableList;
 
 public class ConfigGUI extends GuiConfigsBase {
   private static Category currentTab = Category.Hotkeys;
-  public static final String MOD_ID = HypClient.MOD_ID;
 
   public ConfigGUI() {
-    super(10, 50, MOD_ID, null, "hypextension.title");
+    super(10, 50, HypClient.MOD_ID, null, "hypextension.title");
   }
 
   @Override

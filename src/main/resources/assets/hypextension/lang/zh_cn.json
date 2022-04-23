@@ -14,7 +14,7 @@
   "config.hypextension.chatTimeStamp":"聊天时间戳",
   "config.hypextension.chatBackgroundOverride":"聊天框背景颜色覆写",
   "config.hypextension.saveChatMessage":"保存聊天框未发送内容",
-  "config.hypextension.gammaOverrideValue":"Gamma值",
+  "config.hypextension.gammaValue":"Gamma值",
   "config.hypextension.timeStamp":"时间戳格式",
   "config.hypextension.chatBackgroundColor":"聊天框背景颜色",
   "config.hypextension.reduceExplosionParticles":"减少爆炸粒子数量",

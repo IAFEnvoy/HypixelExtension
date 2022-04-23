@@ -2,13 +2,20 @@ package iafenvoy.hypextension.Config.NativeConfigType;
 
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 import iafenvoy.hypextension.HypClient;
+import iafenvoy.hypextension.Config.ConfigGUI.Category;
 import net.minecraft.text.TranslatableText;
 
-public class NativeDouble extends ConfigDouble {
+public class NDouble extends ConfigDouble {
   private static final String MOD_ID = HypClient.MOD_ID;
 
-  public NativeDouble(String keyname, double defaultValue, double minValue, double maxValue, boolean useSlider) {
+  public NDouble(String keyname, Category category) {
+    this(keyname, 0, Double.MIN_VALUE, Double.MAX_VALUE, false, category);
+  }
+
+  public NDouble(String keyname, double defaultValue, double minValue, double maxValue, boolean useSlider,
+      Category category) {
     super(new TranslatableText("config." + MOD_ID + "." + keyname).getString(), defaultValue, minValue, maxValue,
         useSlider, new TranslatableText("config." + MOD_ID + "." + keyname + ".help").getString());
+    category.add(this);
   }
 }

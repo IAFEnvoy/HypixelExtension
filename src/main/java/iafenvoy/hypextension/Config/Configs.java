@@ -7,71 +7,64 @@ import com.google.gson.JsonObject;
 
 import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigHandler;
-import fi.dy.masa.malilib.config.options.ConfigBoolean;
-import fi.dy.masa.malilib.config.options.ConfigColor;
-import fi.dy.masa.malilib.config.options.ConfigDouble;
-import fi.dy.masa.malilib.config.options.ConfigHotkey;
-import fi.dy.masa.malilib.config.options.ConfigString;
 import fi.dy.masa.malilib.util.JsonUtils;
 import iafenvoy.hypextension.Config.ConfigGUI.Category;
-import iafenvoy.hypextension.Config.NativeConfigType.NativeBoolean;
-import iafenvoy.hypextension.Config.NativeConfigType.NativeColor;
-import iafenvoy.hypextension.Config.NativeConfigType.NativeDouble;
-import iafenvoy.hypextension.Config.NativeConfigType.NativeHotkey;
-import iafenvoy.hypextension.Config.NativeConfigType.NativeString;
+import iafenvoy.hypextension.Config.NativeConfigType.NBoolean;
+import iafenvoy.hypextension.Config.NativeConfigType.NColor;
+import iafenvoy.hypextension.Config.NativeConfigType.NDouble;
+import iafenvoy.hypextension.Config.NativeConfigType.NHotkey;
+import iafenvoy.hypextension.Config.NativeConfigType.NString;
 import iafenvoy.hypextension.Functions.SettingCallback;
 
 public class Configs implements IConfigHandler {
   private static final String FILE_PATH = "./config/hypextension.json";
   private static final File CONFIG_DIR = new File("./config");
   // Hotkeys
-  public static final ConfigHotkey menuOpenKey = Category.Hotkeys.add(new NativeHotkey("menuOpenKey", "F6"));
-  public static final ConfigHotkey fastGameMenuKey = Category.Hotkeys.add(new NativeHotkey("fastGameMenuKey", "R"));
+  public static final NHotkey menuOpenKey = new NHotkey("menuOpenKey", "F6", Category.Hotkeys);
+  public static final NHotkey fastGameMenuKey = new NHotkey("fastGameMenuKey", "R", Category.Hotkeys);
 
   // Options
-  public static final HotkeyBoolean gammaOverride = new HotkeyBoolean("gammaOverride")
-      .setCallback(new SettingCallback());
-  public static final HotkeyBoolean autoTip = new HotkeyBoolean("autoTip");
-  public static final HotkeyBoolean autoGG = new HotkeyBoolean("autoGG");
-  public static final HotkeyBoolean sneak_1_15_2 = new HotkeyBoolean("sneak_1_15_2");// TODO: Buggy.
-  public static final HotkeyBoolean chatTimeStamp = new HotkeyBoolean("chatTimeStamp");
-  public static final HotkeyBoolean chatBackgroundOverride = new HotkeyBoolean("chatBackgroundOverride");
-  public static final HotkeyBoolean saveChatMessage = new HotkeyBoolean("saveChatMessage");// TODO: Buggy with '/'
-  public static final HotkeyBoolean reduceExplosionParticles = new HotkeyBoolean("reduceExplosionParticles");
-  public static final HotkeyBoolean movementKeysLast = new HotkeyBoolean("movementKeysLast");
-  public static final HotkeyBoolean f3Cursor = new HotkeyBoolean("f3Cursor");
-  public static final HotkeyBoolean playerListAlwaysOn = new HotkeyBoolean("playerListAlwaysOn");
-  public static final HotkeyBoolean renderEdgeChunks = new HotkeyBoolean("renderEdgeChunks");
-  public static final HotkeyBoolean removeOwnPotionEffects = new HotkeyBoolean("removeOwnPotionEffects");
-  public static final HotkeyBoolean tntCountDown = new HotkeyBoolean("tntCountDown");
-  public static final HotkeyBoolean fastGameMenu = new HotkeyBoolean("fastGameMenu");
-  public static final HotkeyBoolean renderOwnNameTag = new HotkeyBoolean("renderOwnNameTag");
-  public static final HotkeyBoolean autoFriend = new HotkeyBoolean("autoFriend");
-  // public static final HotkeyBoolean copyChatButton = new
-  // HotkeyBoolean("copyChatButton");// TODO
-  // public static final HotkeyBoolean headLevel = new
-  // HotkeyBoolean("headLevel");// TODO
-  // public static final HotkeyBoolean timer = new HotkeyBoolean("timer");// TODO
+  public static final NBoolean gammaOverride = new NBoolean("gammaOverride", Category.Options);
+  public static final NBoolean autoTip = new NBoolean("autoTip", Category.Options);
+  public static final NBoolean autoGG = new NBoolean("autoGG", Category.Options);
+  public static final NBoolean sneak_1_15_2 = new NBoolean("sneak_1_15_2", Category.Options);// TODO: Buggy.
+  public static final NBoolean chatTimeStamp = new NBoolean("chatTimeStamp", Category.Options);
+  public static final NBoolean chatBackgroundOverride = new NBoolean("chatBackgroundOverride", Category.Options);
+  public static final NBoolean saveChatMessage = new NBoolean("saveChatMessage", Category.Options);// TODO: Buggy
+  public static final NBoolean reduceExplosionParticles = new NBoolean("reduceExplosionParticles", Category.Options);
+  public static final NBoolean movementKeysLast = new NBoolean("movementKeysLast", Category.Options);
+  public static final NBoolean f3Cursor = new NBoolean("f3Cursor", Category.Options);
+  public static final NBoolean playerListAlwaysOn = new NBoolean("playerListAlwaysOn", Category.Options);
+  public static final NBoolean renderEdgeChunks = new NBoolean("renderEdgeChunks", Category.Options);
+  public static final NBoolean removeOwnPotionEffects = new NBoolean("removeOwnPotionEffects", Category.Options);
+  public static final NBoolean tntCountDown = new NBoolean("tntCountDown", Category.Options);
+  public static final NBoolean fastGameMenu = new NBoolean("fastGameMenu", Category.Options);
+  public static final NBoolean renderOwnNameTag = new NBoolean("renderOwnNameTag", Category.Options);
+  public static final NBoolean autoFriend = new NBoolean("autoFriend", Category.Options);
+  // public static final NBoolean copyChatButton = new
+  // NativeBoolean("copyChatButton");// TODO
+  // public static final NBoolean headLevel = new NativeBoolean("headLevel");//
+  // TODO
+  // public static final NBoolean timer = new NativeBoolean("timer");// TODO
 
   // Settings
-  public static final ConfigDouble gammaOverrideValue = Category.Settings
-      .add(new NativeDouble("gammaOverrideValue", 16.0F, 0.0F, 128F, false));
-  public static final ConfigString timeStamp = Category.Settings.add(new NativeString("timeStamp", "[HH:mm:ss]"));
-  public static final ConfigColor chatBackgroundColor = Category.Settings
-      .add(new NativeColor("chatBackgroundColor", "#80000000"));
+  public static final NDouble gammaValue = new NDouble("gammaValue", 16.0F, 0.0F, 128F, false, Category.Settings);
+  public static final NString timeStamp = new NString("timeStamp", "[HH:mm:ss]", Category.Settings);
+  public static final NColor chatBackgroundColor = new NColor("chatBackgroundColor", Category.Settings);
 
   // Chat Filter
-  public static final ConfigBoolean chatFilter = Category.ChatFilter.add(new NativeBoolean("chatFilter", false));
-  public static final ConfigBoolean blockNormal = Category.ChatFilter.add(new NativeBoolean("blockNormal", false));
-  public static final ConfigBoolean blockTeam = Category.ChatFilter.add(new NativeBoolean("blockTeam", false));
-  public static final ConfigBoolean blockGuild = Category.ChatFilter.add(new NativeBoolean("blockGuild", false));
-  public static final ConfigBoolean blockParty = Category.ChatFilter.add(new NativeBoolean("blockParty", false));
-  public static final ConfigBoolean blockShout = Category.ChatFilter.add(new NativeBoolean("blockShout", false));
-  public static final ConfigBoolean blockSpectator = Category.ChatFilter.add(new NativeBoolean("blockSpectator", false));
+  public static final NBoolean chatFilter = new NBoolean("chatFilter", Category.ChatFilter);
+  public static final NBoolean blockNormal = new NBoolean("blockNormal", Category.ChatFilter);
+  public static final NBoolean blockTeam = new NBoolean("blockTeam", Category.ChatFilter);
+  public static final NBoolean blockGuild = new NBoolean("blockGuild", Category.ChatFilter);
+  public static final NBoolean blockParty = new NBoolean("blockParty", Category.ChatFilter);
+  public static final NBoolean blockShout = new NBoolean("blockShout", Category.ChatFilter);
+  public static final NBoolean blockSpectator = new NBoolean("blockSpectator", Category.ChatFilter);
 
   public static void Init() {
     menuOpenKey.getKeybind().setCallback(new HotKeyHandler());
     fastGameMenuKey.getKeybind().setCallback(new HotKeyHandler());
+    gammaOverride.setValueChangeCallback(new SettingCallback());
   }
 
   @Override
