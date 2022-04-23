@@ -26,13 +26,13 @@ public abstract class ChatScreenMixin {
 
   @Inject(method = "removed", at = @At("HEAD"))
   private void storeChatText(CallbackInfo ci) {
-    if (Configs.saveChatMessage.getBooleanValue())
+    if (Configs.INSTANCE.saveChatMessage.getBooleanValue())
       lastChatText = this.chatField.getText();
   }
 
   @Inject(method = "<init>(Ljava/lang/String;)V", at = @At("RETURN"))
   private void restoreText(String defaultText, CallbackInfo ci) {
-    if (Configs.saveChatMessage.getBooleanValue())
+    if (Configs.INSTANCE.saveChatMessage.getBooleanValue())
       this.originalChatText = lastChatText;
   }
 
@@ -43,8 +43,8 @@ public abstract class ChatScreenMixin {
 
   @ModifyConstant(method = "render", constant = @Constant(intValue = Integer.MIN_VALUE))
   private int overrideChatBackgroundColor(int original) {
-    if (Configs.chatBackgroundOverride.getBooleanValue())
-      return Configs.chatBackgroundColor.getIntegerValue();
+    if (Configs.INSTANCE.chatBackgroundOverride.getBooleanValue())
+      return Configs.INSTANCE.chatBackgroundColor.getIntegerValue();
     return original;
   }
 }

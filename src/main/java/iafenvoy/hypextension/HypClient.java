@@ -25,11 +25,11 @@ public class HypClient implements ClientModInitializer {
       return;
     }
 
-    logger.info("[Hypixel Extension] Initializing...");
+    logger.info("[Hypixel Extension] Initializing");
 
-    ConfigManager.getInstance().registerConfigHandler(MOD_ID, new Configs());
-    Configs.Init();
-    Configs.loadFile();
+    ConfigManager.getInstance().registerConfigHandler(MOD_ID, Configs.INSTANCE);
+    Configs.INSTANCE.Init();
+    Configs.INSTANCE.loadFile();
     InputEventHandler.getKeybindManager().registerKeybindProvider(InputHandler.getInstance());
     InputEventHandler.getInputManager().registerKeyboardInputHandler(InputHandler.getInstance());
     Function.Init();

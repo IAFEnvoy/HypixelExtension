@@ -16,10 +16,10 @@ public class HotKeyHandler implements IHotkeyCallback {
 
   @Override
   public boolean onKeyAction(KeyAction action, IKeybind key) {
-    if (key == Configs.menuOpenKey.getKeybind())
+    if (key == Configs.INSTANCE.menuOpenKey.getKeybind())
       client.openScreen(new ConfigGUI());
-    else if (key == Configs.fastGameMenuKey.getKeybind()) {
-      if (Configs.fastGameMenu.getBooleanValue())
+    else if (key == Configs.INSTANCE.fastGameMenuKey.getKeybind()) {
+      if (Configs.INSTANCE.fastGameMenu.getBooleanValue())
         GuiBase.openGui(new FastGameMenuGUI(GameList.INSTANCE.DATA, null));
     } else
       System.out.print("Unknown HotKey");

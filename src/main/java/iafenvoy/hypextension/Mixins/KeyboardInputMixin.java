@@ -15,7 +15,7 @@ import iafenvoy.hypextension.Utils.InputHandler;
 public abstract class KeyboardInputMixin extends Input {
   @Inject(method = "tick(Z)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/input/KeyboardInput;sneaking:Z", ordinal = 0, shift = Shift.AFTER, opcode = Opcodes.PUTFIELD))
   private void customMovement(boolean val1, CallbackInfo ci) {
-    if (Configs.movementKeysLast.getBooleanValue())
+    if (Configs.INSTANCE.movementKeysLast.getBooleanValue())
       InputHandler.getInstance().handleMovementKeys(this);
   }
 }

@@ -30,7 +30,7 @@ public abstract class InGameHudMixin extends DrawableHelper {
 
   @Inject(method = "renderCrosshair", at = @At(value = "FIELD", target = "Lnet/minecraft/client/option/GameOptions;debugEnabled:Z", ordinal = 0), cancellable = true)
   private void overrideCursorRender(CallbackInfo ci) {
-    if (Configs.f3Cursor.getBooleanValue()) {
+    if (Configs.INSTANCE.f3Cursor.getBooleanValue()) {
       RenderUtils.renderDirectionsCursor(this.getZOffset(), this.client.getTickDelta());
       ci.cancel();
     }
@@ -38,7 +38,7 @@ public abstract class InGameHudMixin extends DrawableHelper {
 
   @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/PlayerListHud;tick(Z)V", ordinal = 1, shift = At.Shift.AFTER))
   private void alwaysRenderPlayerList(MatrixStack matrixStack, float partialTicks, CallbackInfo ci) {
-    if (Configs.playerListAlwaysOn.getBooleanValue()) {
+    if (Configs.INSTANCE.playerListAlwaysOn.getBooleanValue()) {
       Scoreboard scoreboard = this.client.world.getScoreboard();
       ScoreboardObjective objective = scoreboard.getObjectiveForSlot(0);
 

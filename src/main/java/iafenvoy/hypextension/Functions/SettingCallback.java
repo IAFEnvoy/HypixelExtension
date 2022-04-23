@@ -10,6 +10,6 @@ public class SettingCallback implements IValueChangeCallback<ConfigBoolean> {
 
   @Override
   public void onValueChanged(ConfigBoolean configKey) {
-    client.options.gamma = configKey.getBooleanValue() ? Configs.gammaValue.getDoubleValue() : 1.0F;
+    client.options.gamma = configKey.getBooleanValue() ? Configs.INSTANCE.gammaValue.getDoubleValue() : 1.0F;
   }
 }

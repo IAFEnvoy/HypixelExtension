@@ -19,7 +19,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
   @Inject(method = "method_30263", at = @At("HEAD"), cancellable = true)
   private void restore_1_15_2_sneaking(CallbackInfoReturnable<Boolean> cir) {
-    if (Configs.sneak_1_15_2.getBooleanValue())
+    if (Configs.INSTANCE.sneak_1_15_2.getBooleanValue())
       cir.setReturnValue(this.onGround);
   }
 }

@@ -13,7 +13,7 @@ import net.minecraft.util.math.BlockPos;
 public abstract class ChunkBuilder_BuiltChunkMixin {
   @Inject(method = "isChunkNonEmpty", at = @At("HEAD"), cancellable = true)
   private void allowEdgeChunksToRender(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-    if (Configs.renderEdgeChunks.getBooleanValue())
+    if (Configs.INSTANCE.renderEdgeChunks.getBooleanValue())
       cir.setReturnValue(true);
   }
 }

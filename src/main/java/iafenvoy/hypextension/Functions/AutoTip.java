@@ -11,7 +11,7 @@ public class AutoTip {
   private static TimerTask task = new TimerTask() {
     public void run() {
       try {
-        if (Configs.autoTip.getBooleanValue())
+        if (Configs.INSTANCE.autoTip.getBooleanValue())
           ClientUtil.sendMessage("/tip all", true);
       } catch (Exception e) {
       }

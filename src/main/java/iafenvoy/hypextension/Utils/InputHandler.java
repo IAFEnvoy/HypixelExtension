@@ -72,8 +72,8 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler {
 
   @Override
   public void addKeysToMap(IKeybindManager manager) {
-    manager.addKeybindToMap(Configs.menuOpenKey.getKeybind());
-    manager.addKeybindToMap(Configs.fastGameMenuKey.getKeybind());
+    manager.addKeybindToMap(Configs.INSTANCE.menuOpenKey.getKeybind());
+    manager.addKeybindToMap(Configs.INSTANCE.fastGameMenuKey.getKeybind());
   }
 
   public enum LeftRight {
