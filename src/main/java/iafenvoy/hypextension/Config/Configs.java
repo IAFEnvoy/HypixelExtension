@@ -43,6 +43,7 @@ public class Configs implements IConfigHandler {
   public final NBoolean fastGameMenu = new NBoolean("fastGameMenu", Category.Options);
   public final NBoolean renderOwnNameTag = new NBoolean("renderOwnNameTag", Category.Options);
   public final NBoolean autoFriend = new NBoolean("autoFriend", Category.Options);
+  public final NBoolean sword_1_8_9 = new NBoolean("sword_1_8_9", Category.Options);
   // public final NBoolean copyChatButton = new
   // NativeBoolean("copyChatButton");// TODO
   // public final NBoolean headLevel = new NativeBoolean("headLevel");//

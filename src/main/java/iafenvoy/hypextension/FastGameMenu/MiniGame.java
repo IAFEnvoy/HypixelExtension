@@ -16,7 +16,8 @@ public class MiniGame {
     this.translateKey = translateKey;
     this.commamd = commamd.contains("/") ? commamd : "/play " + commamd.toLowerCase();
     this.modes = modes;
-    gameName.add(new TranslatableText(translateKey));
+    if (!translateKey.equals("Lobby"))
+      gameName.add(new TranslatableText(translateKey));
   }
 
   public String getTranslateKey() {
@@ -24,7 +25,7 @@ public class MiniGame {
   }
 
   public String getDisplayName() {
-    return new TranslatableText(this.translateKey).getString();
+    return new TranslatableText(this.translateKey).getString() + (modes.size() == 0 ? "" : " >");
   }
 
   public String getCommamd() {

@@ -3,6 +3,7 @@ package iafenvoy.hypextension.Utils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.entity.Entity;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 
 public class ClientUtil {
@@ -12,7 +13,7 @@ public class ClientUtil {
     if (sendToServer)
       client.player.sendChatMessage(message);
     else
-      client.player.sendMessage(Text.of(message), true);
+      client.player.sendMessage(new LiteralText(message), false);
   }
 
   public static Text getPlayerName() {

@@ -8,6 +8,7 @@ import fi.dy.masa.malilib.event.InputEventHandler;
 import iafenvoy.hypextension.Config.Configs;
 import iafenvoy.hypextension.Functions.Function;
 import iafenvoy.hypextension.Utils.InputHandler;
+import iafenvoy.hypextension.Utils.ItemsUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -33,5 +34,7 @@ public class HypClient implements ClientModInitializer {
     InputEventHandler.getKeybindManager().registerKeybindProvider(InputHandler.getInstance());
     InputEventHandler.getInputManager().registerKeyboardInputHandler(InputHandler.getInstance());
     Function.Init();
+
+    ItemsUtil.registerProviders();
   }
 }

@@ -12,7 +12,7 @@ import java.util.List;
 import com.google.common.collect.ImmutableList;
 
 public class ConfigGUI extends GuiConfigsBase {
-  private static Category currentTab = Category.Hotkeys;
+  private static Category currentTab = Category.Options;
 
   public ConfigGUI() {
     super(10, 50, HypClient.MOD_ID, null, "hypextension.title");

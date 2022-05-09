@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.FastGameMenu.GUI;
+package iafenvoy.hypextension.FastGameMenu;
 
 import java.util.List;
 
@@ -10,8 +10,6 @@ import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.gui.button.IButtonActionListener;
 import fi.dy.masa.malilib.util.StringUtils;
 import iafenvoy.hypextension.HypClient;
-import iafenvoy.hypextension.FastGameMenu.GameList;
-import iafenvoy.hypextension.FastGameMenu.MiniGame;
 import net.minecraft.client.util.math.MatrixStack;
 
 public class FastGameMenuGUI extends GuiBase {
@@ -26,7 +24,7 @@ public class FastGameMenuGUI extends GuiBase {
     if (parent != null && !this.games.contains(GameList.BACK))
       this.games.add(0, GameList.BACK);
     // if (parent != null && !this.games.contains(GameList.LOBBY))
-    //   this.games.add(0, GameList.LOBBY);
+    // this.games.add(0, GameList.LOBBY);
   }
 
   @Override
@@ -42,9 +40,7 @@ public class FastGameMenuGUI extends GuiBase {
   }
 
   private void createButton(int locateX, int locateY, MiniGame game) {
-    int height = ButtonIcon.getByName(game.getTranslateKey()) == null ? 20 : 40;
-    ButtonGeneric button = new ButtonGeneric(locateX * 125 + 10, locateY * (height + 5) + 30, 120, height,
-        game.getDisplayName(), ButtonIcon.getByName(game.getTranslateKey()));
+    ButtonGeneric button = new ButtonGeneric(locateX * 125 + 10, locateY * 25 + 30, 120, 20, game.getDisplayName());
     this.addButton(button, new ButtonActionListener(game, this));
   }
 

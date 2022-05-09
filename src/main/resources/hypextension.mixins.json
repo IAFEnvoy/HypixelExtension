@@ -14,7 +14,8 @@
     "LivingEntityMixin",
     "TNTEntityMixin",
     "WorldRendererMixin",
-    "PlayerEntityRendererMixin"
+    "PlayerEntityRendererMixin",
+    "HeldItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
