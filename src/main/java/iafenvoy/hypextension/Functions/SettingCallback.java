@@ -12,6 +12,8 @@ public class SettingCallback implements Callback {
     new Thread(() -> {
       while (client == null)
         ;
+      while (client.options == null)
+        ;
       client.options.gamma = value ? Configs.INSTANCE.gammaValue.getDoubleValue() : 1.0F;
     }).start();
   }
