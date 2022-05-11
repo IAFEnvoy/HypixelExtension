@@ -11,7 +11,6 @@
   "config.hypextension.autoGG":"自动GG（基本全支持）",
   "config.hypextension.sneak_1_15_2":"旧版潜行（暂未完成）",
   "config.hypextension.chatTimeStamp":"聊天时间戳",
-  "config.hypextension.chatBackgroundOverride":"聊天框背景颜色覆写",
   "config.hypextension.saveChatMessage":"保存聊天框未发送内容",
   "config.hypextension.gammaValue":"Gamma值",
   "config.hypextension.timeStamp":"时间戳格式",

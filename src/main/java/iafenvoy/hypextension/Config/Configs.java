@@ -30,8 +30,7 @@ public class Configs implements IConfigHandler {
   public final OptionButton autoGG = new OptionButton("autoGG");
   public final OptionButton sneak_1_15_2 = new OptionButton("sneak_1_15_2");// TODO: Buggy.
   public final OptionButton chatTimeStamp = new OptionButton("chatTimeStamp");
-  public final OptionButton chatBackgroundOverride = new OptionButton("chatBackgroundOverride");
-  public final OptionButton saveChatMessage = new OptionButton("saveChatMessage");// TODO: Buggy
+  public final OptionButton saveChatMessage = new OptionButton("saveChatMessage");
   public final OptionButton reduceExplosionParticles = new OptionButton("reduceExplosionParticles");
   public final OptionButton movementKeysLast = new OptionButton("movementKeysLast");
   public final OptionButton f3Cursor = new OptionButton("f3Cursor");
