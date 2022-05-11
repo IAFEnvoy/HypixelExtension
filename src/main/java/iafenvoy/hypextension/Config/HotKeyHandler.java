@@ -11,13 +11,10 @@ import net.minecraft.client.MinecraftClient;
 public class HotKeyHandler implements IHotkeyCallback {
   private static final MinecraftClient client = MinecraftClient.getInstance();
 
-  public HotKeyHandler() {
-  }
-
   @Override
   public boolean onKeyAction(KeyAction action, IKeybind key) {
     if (key == Configs.INSTANCE.menuOpenKey.getKeybind())
-      client.openScreen(new ConfigGUI());
+      client.openScreen(new OptionGUI());
     else if (key == Configs.INSTANCE.fastGameMenuKey.getKeybind()) {
       if (Configs.INSTANCE.fastGameMenu.getBooleanValue())
         GuiBase.openGui(new FastGameMenuGUI(GameList.INSTANCE.DATA, null));

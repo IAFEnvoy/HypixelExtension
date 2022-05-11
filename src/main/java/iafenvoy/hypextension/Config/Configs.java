@@ -8,54 +8,52 @@ import com.google.gson.JsonObject;
 import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigHandler;
 import fi.dy.masa.malilib.util.JsonUtils;
-import iafenvoy.hypextension.Config.ConfigGUI.Category;
-import iafenvoy.hypextension.Config.NativeConfigType.NBoolean;
 import iafenvoy.hypextension.Config.NativeConfigType.NColor;
 import iafenvoy.hypextension.Config.NativeConfigType.NDouble;
 import iafenvoy.hypextension.Config.NativeConfigType.NHotkey;
-import iafenvoy.hypextension.Config.NativeConfigType.NString;
+import iafenvoy.hypextension.Config.OptionGUI.OptionButton;
 import iafenvoy.hypextension.Functions.SettingCallback;
 
 public class Configs implements IConfigHandler {
   public static final Configs INSTANCE = new Configs();
 
-  private final String FILE_PATH = "./config/hypextension.json";
-  private final File CONFIG_DIR = new File("./config");
+  private final String OPTIONS_PATH = "./config/hypextension/options.json";
+  private final String SETTINGS_PATH = "./config/hypextension/settings.json";
+  private final File CONFIG_DIR = new File("./config/hypextension");
   // Hotkeys
-  public final NHotkey menuOpenKey = new NHotkey("menuOpenKey", "F6", Category.Hotkeys);
-  public final NHotkey fastGameMenuKey = new NHotkey("fastGameMenuKey", "R", Category.Hotkeys);
+  public final NHotkey menuOpenKey = new NHotkey("menuOpenKey", "F6");
+  public final NHotkey fastGameMenuKey = new NHotkey("fastGameMenuKey", "R");
 
   // Options
-  public final NBoolean gammaOverride = new NBoolean("gammaOverride", Category.Options);
-  public final NBoolean autoTip = new NBoolean("autoTip", Category.Options);
-  public final NBoolean autoGG = new NBoolean("autoGG", Category.Options);
-  public final NBoolean sneak_1_15_2 = new NBoolean("sneak_1_15_2", Category.Options);// TODO: Buggy.
-  public final NBoolean chatTimeStamp = new NBoolean("chatTimeStamp", Category.Options);
-  public final NBoolean chatBackgroundOverride = new NBoolean("chatBackgroundOverride", Category.Options);
-  public final NBoolean saveChatMessage = new NBoolean("saveChatMessage", Category.Options);// TODO: Buggy
-  public final NBoolean reduceExplosionParticles = new NBoolean("reduceExplosionParticles", Category.Options);
-  public final NBoolean movementKeysLast = new NBoolean("movementKeysLast", Category.Options);
-  public final NBoolean f3Cursor = new NBoolean("f3Cursor", Category.Options);
-  public final NBoolean playerListAlwaysOn = new NBoolean("playerListAlwaysOn", Category.Options);
-  public final NBoolean renderEdgeChunks = new NBoolean("renderEdgeChunks", Category.Options);
-  public final NBoolean removeOwnPotionEffects = new NBoolean("removeOwnPotionEffects", Category.Options);
-  public final NBoolean tntCountDown = new NBoolean("tntCountDown", Category.Options);
-  public final NBoolean fastGameMenu = new NBoolean("fastGameMenu", Category.Options);
-  public final NBoolean renderOwnNameTag = new NBoolean("renderOwnNameTag", Category.Options);
-  public final NBoolean autoFriend = new NBoolean("autoFriend", Category.Options);
-  public final NBoolean sword_1_8_9 = new NBoolean("sword_1_8_9", Category.Options);
-  // public final NBoolean copyChatButton = new
+  public final OptionButton gammaOverride = new OptionButton("gammaOverride");
+  public final OptionButton autoTip = new OptionButton("autoTip");
+  public final OptionButton autoGG = new OptionButton("autoGG");
+  public final OptionButton sneak_1_15_2 = new OptionButton("sneak_1_15_2");// TODO: Buggy.
+  public final OptionButton chatTimeStamp = new OptionButton("chatTimeStamp");
+  public final OptionButton chatBackgroundOverride = new OptionButton("chatBackgroundOverride");
+  public final OptionButton saveChatMessage = new OptionButton("saveChatMessage");// TODO: Buggy
+  public final OptionButton reduceExplosionParticles = new OptionButton("reduceExplosionParticles");
+  public final OptionButton movementKeysLast = new OptionButton("movementKeysLast");
+  public final OptionButton f3Cursor = new OptionButton("f3Cursor");
+  public final OptionButton playerListAlwaysOn = new OptionButton("playerListAlwaysOn");
+  public final OptionButton renderEdgeChunks = new OptionButton("renderEdgeChunks");
+  public final OptionButton removeOwnPotionEffects = new OptionButton("removeOwnPotionEffects");
+  public final OptionButton tntCountDown = new OptionButton("tntCountDown");
+  public final OptionButton fastGameMenu = new OptionButton("fastGameMenu");
+  public final OptionButton renderOwnNameTag = new OptionButton("renderOwnNameTag");
+  public final OptionButton autoFriend = new OptionButton("autoFriend");
+  public final OptionButton sword_1_8_9 = new OptionButton("sword_1_8_9");
+  // public final OptionButton copyChatButton = new
   // NativeBoolean("copyChatButton");// TODO
-  // public final NBoolean headLevel = new NativeBoolean("headLevel");//
+  // public final OptionButton headLevel = new NativeBoolean("headLevel");//
   // TODO
-  // public final NBoolean timer = new NativeBoolean("timer");// TODO
+  // public final OptionButton timer = new NativeBoolean("timer");// TODO
 
   // Settings
-  public final NDouble gammaValue = new NDouble("gammaValue", 16.0F, 0.0F, 128F, false, Category.Settings);
-  public final NString timeStamp = new NString("timeStamp", "[HH:mm:ss]", Category.Settings);
-  public final NColor chatBackgroundColor = new NColor("chatBackgroundColor", Category.Settings);
+  public final NDouble gammaValue = new NDouble("gammaValue", 16.0F, 0.0F, 128F, false);
+  public final NColor chatBackgroundColor = new NColor("chatBackgroundColor");
 
-  public void Init() {
+  public Configs() {
     menuOpenKey.getKeybind().setCallback(new HotKeyHandler());
     fastGameMenuKey.getKeybind().setCallback(new HotKeyHandler());
     gammaOverride.setValueChangeCallback(new SettingCallback());
@@ -67,22 +65,32 @@ public class Configs implements IConfigHandler {
   }
 
   public void loadFile() {
-    File settingFile = new File(FILE_PATH);
-    if (settingFile.isFile() && settingFile.exists()) {
+    File optionFile = new File(OPTIONS_PATH);
+    if (optionFile.exists()) {
+      JsonElement options = JsonUtils.parseJsonFile(optionFile);
+      if (options instanceof JsonObject)
+        for (OptionButton option : OptionGUI.INSTANCE)
+          if (options.getAsJsonObject().has(option.getTranslateKey()))
+            option.setBooleanValue(options.getAsJsonObject().get(option.getTranslateKey()).getAsBoolean());
+    }
+    File settingFile = new File(SETTINGS_PATH);
+    if (settingFile.exists()) {
       JsonElement jsonElement = JsonUtils.parseJsonFile(settingFile);
       if (jsonElement instanceof JsonObject)
-        for (Category category : Category.values())
-          ConfigUtils.readConfigBase((JsonObject) jsonElement, category.name(), category.getConfigs());
+        ConfigUtils.readConfigBase((JsonObject) jsonElement, "Settings", SettingGUI.configOptions);
     }
   }
 
   @Override
   public void save() {
     if ((CONFIG_DIR.exists() && CONFIG_DIR.isDirectory()) || CONFIG_DIR.mkdirs()) {
-      JsonObject configRoot = new JsonObject();
-      for (Category category : Category.values())
-        ConfigUtils.writeConfigBase(configRoot, category.name(), category.getConfigs());
-      JsonUtils.writeJsonToFile(configRoot, new File(FILE_PATH));
+      JsonObject options = new JsonObject();
+      for (OptionButton option : OptionGUI.INSTANCE)
+        options.addProperty(option.getTranslateKey(), option.getBooleanValue());
+      JsonUtils.writeJsonToFile(options, new File(OPTIONS_PATH));
+      JsonObject settings = new JsonObject();
+      ConfigUtils.writeConfigBase(settings, "Settings", SettingGUI.configOptions);
+      JsonUtils.writeJsonToFile(settings, new File(SETTINGS_PATH));
     }
   }
 }
