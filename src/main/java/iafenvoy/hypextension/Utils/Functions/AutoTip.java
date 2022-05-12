@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.Functions;
+package iafenvoy.hypextension.Utils.Functions;
 
 import java.util.Timer;
 import java.util.TimerTask;

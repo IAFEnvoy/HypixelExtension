@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.Functions;
+package iafenvoy.hypextension.Utils.Functions;
 
 import iafenvoy.hypextension.Config.Configs;
 import iafenvoy.hypextension.Utils.Interface.Callback;

@@ -2,7 +2,7 @@ package iafenvoy.hypextension.Config.NativeConfigType;
 
 import fi.dy.masa.malilib.config.options.ConfigDouble;
 import iafenvoy.hypextension.HypClient;
-import iafenvoy.hypextension.Config.SettingGUI;
+import iafenvoy.hypextension.Config.GUI.SettingGUI;
 import net.minecraft.text.TranslatableText;
 
 public class NDouble extends ConfigDouble {

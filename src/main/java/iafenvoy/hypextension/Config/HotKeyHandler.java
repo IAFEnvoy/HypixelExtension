@@ -4,6 +4,7 @@ import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.hotkeys.IHotkeyCallback;
 import fi.dy.masa.malilib.hotkeys.IKeybind;
 import fi.dy.masa.malilib.hotkeys.KeyAction;
+import iafenvoy.hypextension.Config.GUI.OptionGUI;
 import iafenvoy.hypextension.FastGameMenu.FastGameMenuGUI;
 import iafenvoy.hypextension.FastGameMenu.GameList;
 import net.minecraft.client.MinecraftClient;

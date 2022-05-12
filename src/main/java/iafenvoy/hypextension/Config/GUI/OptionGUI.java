@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.Config;
+package iafenvoy.hypextension.Config.GUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,8 @@ import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.util.StringUtils;
 import iafenvoy.hypextension.HypClient;
+import iafenvoy.hypextension.Config.Configs;
+import iafenvoy.hypextension.Config.TabButton;
 import iafenvoy.hypextension.Utils.Interface.Callback;
 import net.minecraft.client.util.math.MatrixStack;
 

@@ -8,11 +8,13 @@ import com.google.gson.JsonObject;
 import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigHandler;
 import fi.dy.masa.malilib.util.JsonUtils;
+import iafenvoy.hypextension.Config.GUI.OptionGUI;
+import iafenvoy.hypextension.Config.GUI.SettingGUI;
+import iafenvoy.hypextension.Config.GUI.OptionGUI.OptionButton;
 import iafenvoy.hypextension.Config.NativeConfigType.NColor;
 import iafenvoy.hypextension.Config.NativeConfigType.NDouble;
 import iafenvoy.hypextension.Config.NativeConfigType.NHotkey;
-import iafenvoy.hypextension.Config.OptionGUI.OptionButton;
-import iafenvoy.hypextension.Functions.SettingCallback;
+import iafenvoy.hypextension.Utils.Functions.SettingCallback;
 
 public class Configs implements IConfigHandler {
   public static final Configs INSTANCE = new Configs();
