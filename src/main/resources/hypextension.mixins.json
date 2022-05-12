@@ -4,18 +4,20 @@
   "package": "iafenvoy.hypextension.Mixins",
   "compatibilityLevel": "JAVA_8",
   "client": [
-    "PlayerEntityMixin",
-    "ChatHudMixin",
-    "ChatScreenMixin",
-    "KeyboardInputMixin",
-    "ExplosionMixin",
-    "InGameHudMixin",
+    "Entity.ItemEntityMixin",
+    "Entity.LivingEntityMixin",
+    "Entity.PlayerEntityMixin",
+    "Entity.TNTEntityMixin",
+    "GUI.ChatHudMixin",
+    "GUI.ChatScreenMixin",
+    "GUI.InGameHudMixin",
+    "Render.ExplosionMixin",
+    "Render.HeldItemRendererMixin",
+    "Render.ItemEntityRendererMixin",
+    "Render.PlayerEntityRendererMixin",
+    "Render.WorldRendererMixin",
     "ChunkBuilder_BuiltChunkMixin",
-    "LivingEntityMixin",
-    "TNTEntityMixin",
-    "WorldRendererMixin",
-    "PlayerEntityRendererMixin",
-    "HeldItemRendererMixin"
+    "KeyboardInputMixin"
   ],
   "injectors": {
     "defaultRequire": 1

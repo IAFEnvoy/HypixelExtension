@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.Mixins;
+package iafenvoy.hypextension.Mixins.Render;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -31,7 +31,7 @@ public abstract class PlayerEntityRendererMixin
     this.addFeature(new PlayerTagRenderer<>(this));
   }
 
-  @Inject(at = @At("HEAD"), method = "getArmPose", cancellable = true)
+  @Inject(method = "getArmPose", at = @At("HEAD"), cancellable = true)
   private static void getArmPose(AbstractClientPlayerEntity abstractClientPlayerEntity, Hand hand,
       CallbackInfoReturnable<BipedEntityModel.ArmPose> cir) {
     if (Configs.INSTANCE.sword_1_8_9.getBooleanValue()) {

@@ -42,6 +42,7 @@ public class Configs implements IConfigHandler {
   public final OptionButton renderOwnNameTag = new OptionButton("renderOwnNameTag");
   public final OptionButton autoFriend = new OptionButton("autoFriend");
   public final OptionButton sword_1_8_9 = new OptionButton("sword_1_8_9");
+  public final OptionButton betterDropItem = new OptionButton("betterDropItem");
   // public final OptionButton copyChatButton = new
   // NativeBoolean("copyChatButton");// TODO
   // public final OptionButton headLevel = new NativeBoolean("headLevel");//

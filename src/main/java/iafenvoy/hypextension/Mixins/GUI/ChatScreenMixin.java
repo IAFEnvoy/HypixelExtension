@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.Mixins;
+package iafenvoy.hypextension.Mixins.GUI;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

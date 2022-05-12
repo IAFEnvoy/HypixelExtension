@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import fi.dy.masa.malilib.config.ConfigManager;
 import fi.dy.masa.malilib.event.InputEventHandler;
 import iafenvoy.hypextension.Config.Configs;
-import iafenvoy.hypextension.Functions.Function;
+import iafenvoy.hypextension.Functions.AutoTip;
 import iafenvoy.hypextension.Utils.InputHandler;
 import iafenvoy.hypextension.Utils.ItemsUtil;
 import net.fabricmc.api.ClientModInitializer;
@@ -21,19 +21,18 @@ public class HypClient implements ClientModInitializer {
 
   @Override
   public void onInitializeClient() {
+    logger.info("[Hypixel Extension] Initializing");
+    
     if (!FabricLoader.getInstance().isModLoaded("malilib")) {
       logger.fatal("Malilib is not loaded, please download it.");
       return;
     }
 
-    logger.info("[Hypixel Extension] Initializing");
-
     ConfigManager.getInstance().registerConfigHandler(MOD_ID, Configs.INSTANCE);
     Configs.INSTANCE.loadFile();
     InputEventHandler.getKeybindManager().registerKeybindProvider(InputHandler.getInstance());
     InputEventHandler.getInputManager().registerKeyboardInputHandler(InputHandler.getInstance());
-    Function.Init();
-
     ItemsUtil.registerProviders();
+    AutoTip.start();
   }
 }

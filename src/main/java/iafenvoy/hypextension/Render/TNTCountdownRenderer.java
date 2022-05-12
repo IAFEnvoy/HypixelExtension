@@ -3,7 +3,7 @@ package iafenvoy.hypextension.Render;
 //Code from "Time To Life" mod
 import com.google.common.collect.Iterables;
 
-import iafenvoy.hypextension.Mixins.TNTEntityMixin;
+import iafenvoy.hypextension.Mixins.Entity.TNTEntityMixin;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.Frustum;

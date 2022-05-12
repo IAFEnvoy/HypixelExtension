@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.Mixins;
+package iafenvoy.hypextension.Mixins.Entity;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
