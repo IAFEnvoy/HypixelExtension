@@ -60,8 +60,8 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
   @Inject(method = "render", at = @At("HEAD"), cancellable = true)
   private void render(ItemEntity dropped, float f, float partialTicks, MatrixStack matrix,
       VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo callback) {
-    matrix.push();
     if (Configs.INSTANCE.betterDropItem.getBooleanValue()) {
+      matrix.push();
       ItemStack itemStack = dropped.getStack();
       // setup seed for random rotation
       int seed = itemStack.isEmpty() ? 187 : Item.getRawId(itemStack.getItem()) + itemStack.getDamage();
@@ -158,10 +158,13 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
       // special-case soul sand
       if (dropped.world.getBlockState(dropped.getBlockPos()).getBlock().equals(Blocks.SOUL_SAND))
         matrix.translate(0, 0, -.1);
-      // special-case skulls
       if (dropped.getStack().getItem() instanceof BlockItem)
         if (((BlockItem) dropped.getStack().getItem()).getBlock() instanceof SkullBlock)
           matrix.translate(0, .11, 0);
+        else {
+          matrix.multiply(Vec3f.NEGATIVE_X.getDegreesQuaternion(90));
+          matrix.translate(0, -.2, 0);
+        }
 
       float scaleX = bakedModel.getTransformation().ground.scale.getX();
       float scaleY = bakedModel.getTransformation().ground.scale.getY();
@@ -203,10 +206,10 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
         if (!hasDepthInGui)
           matrix.translate(0.0F * scaleX, 0.0F * scaleY, 0.0625F * scaleZ);
       }
+      // end
+      matrix.pop();
+      super.render(dropped, f, partialTicks, matrix, vertexConsumerProvider, i);
+      callback.cancel();
     }
-    // end
-    matrix.pop();
-    super.render(dropped, f, partialTicks, matrix, vertexConsumerProvider, i);
-    callback.cancel();
   }
 }

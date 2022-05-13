@@ -45,11 +45,11 @@ public class Configs implements IConfigHandler {
   public final OptionButton autoFriend = new OptionButton("autoFriend");
   public final OptionButton sword_1_8_9 = new OptionButton("sword_1_8_9");
   public final OptionButton betterDropItem = new OptionButton("betterDropItem");
+  public final OptionButton betterPingShow = new OptionButton("betterPingShow");
   // public final OptionButton copyChatButton = new
-  // NativeBoolean("copyChatButton");// TODO
-  // public final OptionButton headLevel = new NativeBoolean("headLevel");//
-  // TODO
-  // public final OptionButton timer = new NativeBoolean("timer");// TODO
+  // OptionButton("copyChatButton");// TODO
+  // public final OptionButton headLevel = new OptionButton("headLevel"); //TODO
+  // public final OptionButton timer = new OptionButton("timer");// TODO
 
   // Settings
   public final NDouble gammaValue = new NDouble("gammaValue", 16.0F, 0.0F, 128F, false);
@@ -63,10 +63,6 @@ public class Configs implements IConfigHandler {
 
   @Override
   public void load() {
-    loadFile();
-  }
-
-  public void loadFile() {
     File optionFile = new File(OPTIONS_PATH);
     if (optionFile.exists()) {
       JsonElement options = JsonUtils.parseJsonFile(optionFile);

@@ -29,7 +29,7 @@ public class HypClient implements ClientModInitializer {
     }
 
     ConfigManager.getInstance().registerConfigHandler(MOD_ID, Configs.INSTANCE);
-    Configs.INSTANCE.loadFile();
+    Configs.INSTANCE.load();
     InputEventHandler.getKeybindManager().registerKeybindProvider(InputHandler.getInstance());
     InputEventHandler.getInputManager().registerKeyboardInputHandler(InputHandler.getInstance());
     ItemsUtil.registerProviders();

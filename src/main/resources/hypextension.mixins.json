@@ -11,6 +11,7 @@
     "GUI.ChatHudMixin",
     "GUI.ChatScreenMixin",
     "GUI.InGameHudMixin",
+    "GUI.PlayerListHudMixin",
     "Render.ExplosionMixin",
     "Render.HeldItemRendererMixin",
     "Render.ItemEntityRendererMixin",

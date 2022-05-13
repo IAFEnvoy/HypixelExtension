@@ -17,7 +17,7 @@ import net.minecraft.text.Text;
 
 @Mixin(value = ChatHud.class, priority = 1100)
 public abstract class ChatHudMixin extends DrawableHelper {
-  @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;I)V", at = @At("HEAD"), argsOnly = true)
+  @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;IIZ)V", at = @At("HEAD"), argsOnly = true)
   private Text addMessageHandler(Text componentIn) {
     if (Configs.INSTANCE.autoGG.getBooleanValue())
       AutoGG.checkMessage(componentIn.getString());
