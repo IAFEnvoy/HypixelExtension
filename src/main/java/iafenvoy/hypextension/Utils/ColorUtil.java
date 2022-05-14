@@ -13,21 +13,11 @@ public class ColorUtil {
   public static final int COLOR_END = 0xE53935;
 
   public static int getColor(int ping) {
-    if (ping < PING_START) {
+    if (ping < PING_START) 
       return COLOR_GREY;
-    }
-
-    if (ping < PING_MID) {
-      return ColorUtil.interpolate(
-          COLOR_START,
-          COLOR_MID,
-          computeOffset(PING_START, PING_MID, ping));
-    }
-
-    return ColorUtil.interpolate(
-        COLOR_MID,
-        COLOR_END,
-        computeOffset(PING_MID, PING_END, Math.min(ping, PING_END)));
+    if (ping < PING_MID) 
+      return interpolate(COLOR_START, COLOR_MID, computeOffset(PING_START, PING_MID, ping));
+    return interpolate(COLOR_MID, COLOR_END, computeOffset(PING_MID, PING_END, Math.min(ping, PING_END)));
   }
 
   static float computeOffset(int start, int end, int value) {
@@ -36,9 +26,8 @@ public class ColorUtil {
   }
 
   public static int interpolate(int colorStart, int colorEnd, float offset) {
-    if (offset < 0 || offset > 1) {
+    if (offset < 0 || offset > 1)
       throw new IllegalArgumentException("Offset must be between 0.0 and 1.0");
-    }
 
     int redDiff = getRed(colorEnd) - getRed(colorStart);
     int greenDiff = getGreen(colorEnd) - getGreen(colorStart);

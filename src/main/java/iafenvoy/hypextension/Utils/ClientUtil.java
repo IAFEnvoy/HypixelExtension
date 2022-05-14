@@ -2,7 +2,6 @@ package iafenvoy.hypextension.Utils;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
-import net.minecraft.entity.Entity;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 
@@ -26,9 +25,5 @@ public class ClientUtil {
 
   public static EntityRenderDispatcher getEntityDispatcher() {
     return MinecraftClient.getInstance().getEntityRenderDispatcher();
-  }
-
-  public static Entity getCameraEntity() {
-    return MinecraftClient.getInstance().getCameraEntity();
   }
 }

@@ -4,6 +4,8 @@
   "package": "iafenvoy.hypextension.Mixins",
   "compatibilityLevel": "JAVA_8",
   "client": [
+    "Block.ChestBlockMixin",
+    "Block.EnderChestBlockMixin",
     "Entity.ItemEntityMixin",
     "Entity.LivingEntityMixin",
     "Entity.PlayerEntityMixin",
@@ -12,6 +14,7 @@
     "GUI.ChatScreenMixin",
     "GUI.InGameHudMixin",
     "GUI.PlayerListHudMixin",
+    "Render.BlockEntityRenderDispatcherMixin",
     "Render.ExplosionMixin",
     "Render.HeldItemRendererMixin",
     "Render.ItemEntityRendererMixin",

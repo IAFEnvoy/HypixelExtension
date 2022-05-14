@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import iafenvoy.hypextension.Config.Configs;
@@ -17,6 +19,11 @@ import net.minecraft.text.Text;
 
 @Mixin(value = ChatHud.class, priority = 1100)
 public abstract class ChatHudMixin extends DrawableHelper {
+  @ModifyConstant(method = "addMessage(Lnet/minecraft/text/Text;IIZ)V", constant = @Constant(intValue = 100), expect = 2)
+  public int changeMaxHistory(int original) {
+    return 16384;
+  }
+
   @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;IIZ)V", at = @At("HEAD"), argsOnly = true)
   private Text addMessageHandler(Text componentIn) {
     if (Configs.INSTANCE.autoGG.getBooleanValue())
