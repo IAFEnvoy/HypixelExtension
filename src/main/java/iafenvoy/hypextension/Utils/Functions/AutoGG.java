@@ -1,6 +1,6 @@
 package iafenvoy.hypextension.Utils.Functions;
 
-import iafenvoy.hypextension.FastGameMenu.MiniGame;
+import iafenvoy.hypextension.Hud.FastGameMenu.MiniGame;
 import iafenvoy.hypextension.Utils.ClientUtil;
 
 public class AutoGG {

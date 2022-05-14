@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.FastGameMenu;
+package iafenvoy.hypextension.Hud.FastGameMenu;
 
 import java.util.List;
 

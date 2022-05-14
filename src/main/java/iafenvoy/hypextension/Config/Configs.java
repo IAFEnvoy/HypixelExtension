@@ -47,6 +47,7 @@ public class Configs implements IConfigHandler {
   public final OptionButton betterDropItem = new OptionButton("betterDropItem");
   public final OptionButton betterPingShow = new OptionButton("betterPingShow");
   public final OptionButton fastChestRender = new OptionButton("fastChestRender");
+  public final OptionButton forceCloseLoadingScreen = new OptionButton("forceCloseLoadingScreen");
   // public final OptionButton copyChatButton = new
   // OptionButton("copyChatButton");// TODO
   // public final OptionButton headLevel = new OptionButton("headLevel"); //TODO

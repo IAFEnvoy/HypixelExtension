@@ -29,5 +29,6 @@
   "config.hypextension.sword_1_8_9":"1.8.9格挡",
   "config.hypextension.betterDropItem":"更真实掉落物",
   "config.hypextension.betterPingShow":"Ping显示",
-  "config.hypextension.fastChestRender":"箱子快速渲染"
+  "config.hypextension.fastChestRender":"箱子快速渲染",
+  "config.hypextension.forceCloseLoadingScreen":"异步加载地形"
 }

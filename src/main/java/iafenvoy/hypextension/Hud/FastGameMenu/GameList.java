@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.FastGameMenu;
+package iafenvoy.hypextension.Hud.FastGameMenu;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
