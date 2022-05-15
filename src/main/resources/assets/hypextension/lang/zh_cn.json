@@ -30,5 +30,6 @@
   "config.hypextension.betterDropItem":"更真实掉落物",
   "config.hypextension.betterPingShow":"Ping显示",
   "config.hypextension.fastChestRender":"箱子快速渲染",
-  "config.hypextension.forceCloseLoadingScreen":"异步加载地形"
+  "config.hypextension.forceCloseLoadingScreen":"异步加载地形",
+  "config.hypextension.extendHistorySize":"增加消息记录缓存"
 }

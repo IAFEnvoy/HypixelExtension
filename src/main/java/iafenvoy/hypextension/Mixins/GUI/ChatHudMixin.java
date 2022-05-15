@@ -21,7 +21,7 @@ import net.minecraft.text.Text;
 public abstract class ChatHudMixin extends DrawableHelper {
   @ModifyConstant(method = "addMessage(Lnet/minecraft/text/Text;IIZ)V", constant = @Constant(intValue = 100), expect = 2)
   public int changeMaxHistory(int original) {
-    return 16384;
+    return Configs.INSTANCE.extendHistorySize.getBooleanValue() ? 16384 : original;
   }
 
   @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;IIZ)V", at = @At("HEAD"), argsOnly = true)

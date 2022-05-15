@@ -20,20 +20,23 @@ public abstract class ChatScreenMixin {
   protected TextFieldWidget chatField;
   @Shadow
   private String originalChatText;
-
   private static String lastChatText = "";
+  private static boolean shouldSave;
 
   @Inject(method = "removed", at = @At("HEAD"))
   private void storeChatText(CallbackInfo ci) {
-    lastChatText = this.chatField.getText();
+    if (shouldSave)
+      lastChatText = this.chatField.getText();
   }
 
-  @Inject(method = "<init>(Ljava/lang/String;)V", at = @At("RETURN"))
+  @Inject(method = "<init>", at = @At("RETURN"))
   private void restoreText(String defaultText, CallbackInfo ci) {
     if (Configs.INSTANCE.saveChatMessage.getBooleanValue()) {
       if (InputHandler.lastKeyCode == 47)// 47 is the ascii code of '/'
-        lastChatText = "/";
-      this.originalChatText = lastChatText;
+        this.originalChatText = "/";
+      else
+        this.originalChatText = lastChatText;
+      shouldSave = InputHandler.lastKeyCode != 47;
     }
   }
 
