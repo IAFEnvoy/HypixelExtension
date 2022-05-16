@@ -7,11 +7,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import fi.dy.masa.malilib.util.GuiUtils;
 import iafenvoy.hypextension.Config.Configs;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.gui.hud.PlayerListHud;
@@ -57,5 +59,13 @@ public abstract class InGameHudMixin extends DrawableHelper {
       this.playerListHud.tick(true);
       this.playerListHud.render(matrixStack, this.scaledWidth, scoreboard, objective);
     }
+  }
+
+  @Redirect(method = "renderScoreboardSidebar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/font/TextRenderer;draw(Lnet/minecraft/client/util/math/MatrixStack;Ljava/lang/String;FFI)I"))
+  private int deleteScoreRender(TextRenderer renderer, MatrixStack matrices, String text, float x, float y,
+      int color) {
+    if (!Configs.INSTANCE.scoreboardFix.getBooleanValue())
+      return renderer.draw(matrices, text, x, y, color);
+    return 0;
   }
 }
