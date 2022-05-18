@@ -11,7 +11,7 @@
   "config.hypextension.autoGG":"自动GG（基本全支持）",
   "config.hypextension.sneak_1_15_2":"旧版潜行（暂未完成）",
   "config.hypextension.chatTimeStamp":"聊天时间戳",
-  "config.hypextension.saveChatMessage":"保存聊天框未发送内容",
+  "config.hypextension.saveChatInput":"保存聊天框未发送内容",
   "config.hypextension.gammaValue":"Gamma值",
   "config.hypextension.timeStamp":"时间戳格式",
   "config.hypextension.chatBackgroundColor":"聊天框背景颜色",
@@ -32,5 +32,6 @@
   "config.hypextension.fastChestRender":"箱子快速渲染",
   "config.hypextension.forceCloseLoadingScreen":"异步加载地形",
   "config.hypextension.extendHistorySize":"增加消息记录缓存",
+  "config.hypextension.saveChatHistory":"保留消息历史记录",
   "config.hypextension.scoreboardFix":"计分板右侧分数隐藏"
 }

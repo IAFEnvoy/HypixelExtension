@@ -31,7 +31,7 @@ public abstract class ChatScreenMixin {
 
   @Inject(method = "<init>", at = @At("RETURN"))
   private void restoreText(String defaultText, CallbackInfo ci) {
-    if (Configs.INSTANCE.saveChatMessage.getBooleanValue()) {
+    if (Configs.INSTANCE.saveChatInput.getBooleanValue()) {
       if (InputHandler.lastKeyCode == 47)// 47 is the ascii code of '/'
         this.originalChatText = "/";
       else

@@ -32,7 +32,7 @@ public class Configs implements IConfigHandler {
   public final OptionButton autoGG = new OptionButton("autoGG");
   public final OptionButton sneak_1_15_2 = new OptionButton("sneak_1_15_2");// TODO: Buggy.
   public final OptionButton chatTimeStamp = new OptionButton("chatTimeStamp");
-  public final OptionButton saveChatMessage = new OptionButton("saveChatMessage");
+  public final OptionButton saveChatInput = new OptionButton("saveChatInput");
   public final OptionButton reduceExplosionParticles = new OptionButton("reduceExplosionParticles");
   public final OptionButton movementKeysLast = new OptionButton("movementKeysLast");
   public final OptionButton f3Cursor = new OptionButton("f3Cursor");
@@ -49,6 +49,7 @@ public class Configs implements IConfigHandler {
   public final OptionButton fastChestRender = new OptionButton("fastChestRender");
   public final OptionButton forceCloseLoadingScreen = new OptionButton("forceCloseLoadingScreen");
   public final OptionButton extendHistorySize = new OptionButton("extendHistorySize");
+  public final OptionButton saveChatHistory = new OptionButton("saveChatHistory");
   public final OptionButton scoreboardFix = new OptionButton("scoreboardFix");
   // public final OptionButton copyChatButton = new
   // OptionButton("copyChatButton");// TODO
