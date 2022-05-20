@@ -21,7 +21,8 @@
     ]
   },
   "mixins": [
-    "hypextension.mixins.json"
+    "hypextension.mixins.json",
+    "compat.hypextension.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.3",

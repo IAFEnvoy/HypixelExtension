@@ -30,11 +30,16 @@ dependencies {
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 
-    //malilib
-    modImplementation "fi.dy.masa.malilib:malilib:fabric-1.16.4-0.10.0-dev.21+arne.5"
+  //malilib
+  modImplementation "fi.dy.masa.malilib:malilib:fabric-1.16.4-0.10.0-dev.21+arne.5"
     
-    //mod menu api
-    modImplementation "io.github.prospector.modmenu:modmenu:1.16.8"
+  //mod menu api
+  modImplementation "io.github.prospector.modmenu:modmenu:1.16.8"
+
+  //compat
+  //kron hud
+  modImplementation "io.github.darkkronicle.polish:polish:1.0.3"
+  modImplementation "io.github.darkkronicle.kronhud:kronhud:1.1.1"
 }
 
 processResources {
