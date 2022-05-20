@@ -3,7 +3,6 @@
   "minVersion": "0.7",
   "package": "iafenvoy.hypextension.Mixins",
   "compatibilityLevel": "JAVA_8",
-  "plugin": "iafenvoy.hypextension.Mixins.Compat.MixinCompatPlugin",
   "client": [
     "Compat.ScoreboardHudMixin"
   ],
