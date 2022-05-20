@@ -10,7 +10,6 @@ import fi.dy.masa.malilib.util.GuiUtils;
 import iafenvoy.hypextension.Config.Configs;
 
 public class InputHandler implements IKeybindProvider, IKeyboardInputHandler {
-  public static int lastKeyCode = 0;
   private static final MinecraftClient client = MinecraftClient.getInstance();
   private static final InputHandler INSTANCE = new InputHandler();
   private LeftRight lastSidewaysInput = LeftRight.NONE;
@@ -26,7 +25,6 @@ public class InputHandler implements IKeybindProvider, IKeyboardInputHandler {
 
   @Override
   public boolean onKeyInput(int keyCode, int scanCode, int modifiers, boolean eventKeyState) {
-    lastKeyCode = keyCode;
     if (GuiUtils.getCurrentScreen() == null && eventKeyState)
       this.storeLastMovementDirection(keyCode, scanCode);
     return false;

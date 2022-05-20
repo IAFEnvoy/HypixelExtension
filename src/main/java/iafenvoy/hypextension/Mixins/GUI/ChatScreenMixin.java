@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import iafenvoy.hypextension.Config.Configs;
-import iafenvoy.hypextension.Utils.InputHandler;
 import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 
@@ -32,11 +31,11 @@ public abstract class ChatScreenMixin {
   @Inject(method = "<init>", at = @At("RETURN"))
   private void restoreText(String defaultText, CallbackInfo ci) {
     if (Configs.INSTANCE.saveChatInput.getBooleanValue()) {
-      if (InputHandler.lastKeyCode == 47)// 47 is the ascii code of '/'
+      if (defaultText == "/")
         this.originalChatText = "/";
       else
         this.originalChatText = lastChatText;
-      shouldSave = InputHandler.lastKeyCode != 47;
+      shouldSave = defaultText != "/";
     }
   }
 

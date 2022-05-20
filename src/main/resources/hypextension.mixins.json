@@ -13,7 +13,6 @@
     "GUI.ChatHudMixin",
     "GUI.ChatScreenMixin",
     "GUI.InGameHudMixin",
-    "GUI.MinecraftClientMixin",
     "GUI.PlayerListHudMixin",
     "Render.BlockEntityRenderDispatcherMixin",
     "Render.ExplosionMixin",
