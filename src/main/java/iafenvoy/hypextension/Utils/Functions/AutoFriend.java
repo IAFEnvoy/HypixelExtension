@@ -9,6 +9,8 @@ public class AutoFriend {
     if (message.contains(lineString)) {
       String[] s = message.split("\\n");
       String playername = s[1].replace("Friend request from ", "");
+      if (playername.contains("]"))
+        playername = playername.split("]")[1];
       ClientUtil.sendMessage("/friend accept " + playername, true);
     }
   }
