@@ -1,6 +1,8 @@
 package iafenvoy.hypextension.Mixins.Render;
 
 //Code from "Time To Life" mod
+import iafenvoy.hypextension.Data.Config.Configs;
+import iafenvoy.hypextension.Render.TNTCountdownRenderer;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.Frustum;
 import net.minecraft.client.render.GameRenderer;
@@ -13,9 +15,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import iafenvoy.hypextension.Config.Configs;
-import iafenvoy.hypextension.Render.TNTCountdownRenderer;
 
 @Mixin(WorldRenderer.class)
 public class WorldRendererMixin {

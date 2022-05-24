@@ -1,7 +1,6 @@
-package iafenvoy.hypextension.Utils.Functions;
+package iafenvoy.hypextension.Event.Callback;
 
-import iafenvoy.hypextension.Config.Configs;
-import iafenvoy.hypextension.Utils.Interface.Callback;
+import iafenvoy.hypextension.Data.Config.Configs;
 import net.minecraft.client.MinecraftClient;
 
 public class SettingCallback implements Callback {

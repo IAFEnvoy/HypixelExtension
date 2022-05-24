@@ -1,20 +1,20 @@
-package iafenvoy.hypextension.Config;
-
-import java.io.File;
+package iafenvoy.hypextension.Data.Config;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
 import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigHandler;
+import fi.dy.masa.malilib.config.options.ConfigDouble;
+import fi.dy.masa.malilib.config.options.ConfigHotkey;
+import fi.dy.masa.malilib.hotkeys.KeybindSettings;
 import fi.dy.masa.malilib.util.JsonUtils;
-import iafenvoy.hypextension.Config.GUI.OptionGUI;
-import iafenvoy.hypextension.Config.GUI.SettingGUI;
-import iafenvoy.hypextension.Config.GUI.OptionGUI.OptionButton;
-import iafenvoy.hypextension.Config.NativeConfigType.NColor;
-import iafenvoy.hypextension.Config.NativeConfigType.NDouble;
-import iafenvoy.hypextension.Config.NativeConfigType.NHotkey;
-import iafenvoy.hypextension.Utils.Functions.SettingCallback;
+import iafenvoy.hypextension.HypClient;
+import iafenvoy.hypextension.Event.Callback.SettingCallback;
+import iafenvoy.hypextension.GUI.OptionGUI;
+import iafenvoy.hypextension.GUI.SettingGUI;
+import iafenvoy.hypextension.GUI.OptionGUI.OptionButton;
+import java.io.File;
+import net.minecraft.text.TranslatableText;
 
 public class Configs implements IConfigHandler {
   public static final Configs INSTANCE = new Configs();
@@ -25,7 +25,6 @@ public class Configs implements IConfigHandler {
   // Hotkeys
   public final NHotkey menuOpenKey = new NHotkey("menuOpenKey", "F6");
   public final NHotkey fastGameMenuKey = new NHotkey("fastGameMenuKey", "R");
-
   // Options
   public final OptionButton gammaOverride = new OptionButton("gammaOverride");
   public final OptionButton autoTip = new OptionButton("autoTip");
@@ -54,10 +53,8 @@ public class Configs implements IConfigHandler {
   // OptionButton("copyChatButton");// TODO
   // public final OptionButton headLevel = new OptionButton("headLevel"); //TODO
   // public final OptionButton timer = new OptionButton("timer");// TODO
-
   // Settings
   public final NDouble gammaValue = new NDouble("gammaValue", 16.0F, 0.0F, 128F, false);
-  public final NColor chatBackgroundColor = new NColor("chatBackgroundColor");
 
   public Configs() {
     menuOpenKey.getKeybind().setCallback(new HotKeyHandler());
@@ -93,6 +90,34 @@ public class Configs implements IConfigHandler {
       JsonObject settings = new JsonObject();
       ConfigUtils.writeConfigBase(settings, "Settings", SettingGUI.configOptions);
       JsonUtils.writeJsonToFile(settings, new File(SETTINGS_PATH));
+    }
+  }
+
+  public class NDouble extends ConfigDouble {
+    private static final String MOD_ID = HypClient.MOD_ID;
+
+    public NDouble(String keyname) {
+      this(keyname, 0, Double.MIN_VALUE, Double.MAX_VALUE, false);
+    }
+
+    public NDouble(String keyname, double defaultValue, double minValue, double maxValue, boolean useSlider) {
+      super(new TranslatableText("config." + MOD_ID + "." + keyname).getString(), defaultValue, minValue, maxValue,
+          useSlider, new TranslatableText("config." + MOD_ID + "." + keyname + ".help").getString());
+      SettingGUI.configOptions.add(this);
+    }
+  }
+
+  public class NHotkey extends ConfigHotkey {
+    private static final String MOD_ID = HypClient.MOD_ID;
+
+    public NHotkey(String keyname) {
+      this(keyname, "");
+    }
+
+    public NHotkey(String keyname, String defaultHotkey) {
+      super(new TranslatableText("config." + MOD_ID + "." + keyname).getString(), defaultHotkey,
+          KeybindSettings.DEFAULT, new TranslatableText("config." + MOD_ID + "." + keyname + ".help").getString());
+      SettingGUI.configOptions.add(this);
     }
   }
 }

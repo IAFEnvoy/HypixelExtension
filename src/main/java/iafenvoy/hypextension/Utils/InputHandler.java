@@ -1,26 +1,22 @@
 package iafenvoy.hypextension.Utils;
 
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.input.Input;
-import net.minecraft.client.option.GameOptions;
 import fi.dy.masa.malilib.hotkeys.IKeybindManager;
 import fi.dy.masa.malilib.hotkeys.IKeybindProvider;
 import fi.dy.masa.malilib.hotkeys.IKeyboardInputHandler;
 import fi.dy.masa.malilib.util.GuiUtils;
-import iafenvoy.hypextension.Config.Configs;
+import iafenvoy.hypextension.Data.Config.Configs;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.input.Input;
+import net.minecraft.client.option.GameOptions;
 
 public class InputHandler implements IKeybindProvider, IKeyboardInputHandler {
+  public static final InputHandler INSTANCE = new InputHandler();
   private static final MinecraftClient client = MinecraftClient.getInstance();
-  private static final InputHandler INSTANCE = new InputHandler();
   private LeftRight lastSidewaysInput = LeftRight.NONE;
   private ForwardBack lastForwardInput = ForwardBack.NONE;
 
   public InputHandler() {
     super();
-  }
-
-  public static InputHandler getInstance() {
-    return INSTANCE;
   }
 
   @Override

@@ -1,12 +1,10 @@
-package iafenvoy.hypextension.Config.GUI;
-
-import java.util.ArrayList;
-import java.util.List;
+package iafenvoy.hypextension.GUI;
 
 import fi.dy.masa.malilib.config.IConfigBase;
 import fi.dy.masa.malilib.gui.GuiConfigsBase;
+import java.util.ArrayList;
+import java.util.List;
 import iafenvoy.hypextension.HypClient;
-import iafenvoy.hypextension.Config.TabButton;
 
 public class SettingGUI extends GuiConfigsBase {
   public static final List<IConfigBase> configOptions = new ArrayList<>();

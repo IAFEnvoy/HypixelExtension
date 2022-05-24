@@ -1,8 +1,4 @@
-package iafenvoy.hypextension.Hud.FastGameMenu;
-
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
+package iafenvoy.hypextension.GUI;
 
 import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.gui.button.ButtonBase;
@@ -10,7 +6,12 @@ import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.gui.button.IButtonActionListener;
 import fi.dy.masa.malilib.util.StringUtils;
 import iafenvoy.hypextension.HypClient;
+import iafenvoy.hypextension.Data.Game.GameList;
+import iafenvoy.hypextension.Data.Game.MiniGame;
+
+import java.util.List;
 import net.minecraft.client.util.math.MatrixStack;
+import org.jetbrains.annotations.Nullable;
 
 public class FastGameMenuGUI extends GuiBase {
   private final List<MiniGame> games;

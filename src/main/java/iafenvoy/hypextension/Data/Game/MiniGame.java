@@ -1,9 +1,8 @@
-package iafenvoy.hypextension.Hud.FastGameMenu;
-
-import java.util.ArrayList;
-import java.util.List;
+package iafenvoy.hypextension.Data.Game;
 
 import iafenvoy.hypextension.Utils.ClientUtil;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.text.TranslatableText;
 
 public class MiniGame {

@@ -2,8 +2,8 @@ package iafenvoy.hypextension.Render;
 
 //Code from "Time To Life" mod
 import com.google.common.collect.Iterables;
-
 import iafenvoy.hypextension.Mixins.Entity.TNTEntityMixin;
+import java.util.stream.StreamSupport;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.Frustum;
@@ -15,8 +15,6 @@ import net.minecraft.entity.TntEntity;
 import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Quaternion;
 import net.minecraft.util.math.Vec3d;
-
-import java.util.stream.StreamSupport;
 
 public class TNTCountdownRenderer {
   public static void render(MatrixStack matrices, float partialTicks, Camera camera, Matrix4f projection,

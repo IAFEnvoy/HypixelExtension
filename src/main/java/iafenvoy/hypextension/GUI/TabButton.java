@@ -1,10 +1,8 @@
-package iafenvoy.hypextension.Config;
+package iafenvoy.hypextension.GUI;
 
 import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.gui.button.ButtonGeneric;
 import fi.dy.masa.malilib.util.StringUtils;
-import iafenvoy.hypextension.Config.GUI.OptionGUI;
-import iafenvoy.hypextension.Config.GUI.SettingGUI;
 
 public class TabButton {
   static final ButtonGeneric options = new ButtonGeneric(10, 30, 130, 20,

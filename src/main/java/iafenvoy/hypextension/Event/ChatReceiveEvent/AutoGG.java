@@ -1,9 +1,12 @@
-package iafenvoy.hypextension.Utils.Functions;
+package iafenvoy.hypextension.Event.ChatReceiveEvent;
 
-import iafenvoy.hypextension.Hud.FastGameMenu.MiniGame;
+import iafenvoy.hypextension.Data.Config.Configs;
+import iafenvoy.hypextension.Data.Game.MiniGame;
 import iafenvoy.hypextension.Utils.ClientUtil;
+import iafenvoy.hypextension.Utils.Interface.ChatReceiveEvent;
 
-public class AutoGG {
+public class AutoGG implements ChatReceiveEvent {
+  public static final AutoGG INSTANCE = new AutoGG();
   private static final String lineString = "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬";
   private static String previousMessage = "";
   private static long prev = 0L;
@@ -11,7 +14,13 @@ public class AutoGG {
   private static boolean shouldSend = false;
   private static int count = 0;
 
-  public static void checkMessage(String message) {
+  @Override
+  public boolean shouldExecute() {
+    return Configs.INSTANCE.autoGG.getBooleanValue();
+  }
+
+  @Override
+  public void execute(String message) {
     if (message.contains("The game starts in"))
       prev = System.currentTimeMillis();
     if (previousMessage.contains(lineString)) {

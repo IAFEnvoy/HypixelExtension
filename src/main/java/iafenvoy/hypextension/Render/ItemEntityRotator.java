@@ -1,4 +1,4 @@
-package iafenvoy.hypextension.Utils.Interface;
+package iafenvoy.hypextension.Render;
 
 // code from "better drop item" mod
 import net.fabricmc.api.EnvType;

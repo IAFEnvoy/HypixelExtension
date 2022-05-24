@@ -1,7 +1,6 @@
 package iafenvoy.hypextension.Render;
 
-import iafenvoy.hypextension.Config.Configs;
-import iafenvoy.hypextension.Utils.ClientUtil;
+import iafenvoy.hypextension.Data.Config.Configs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.option.Perspective;
@@ -22,6 +21,7 @@ import net.minecraft.util.math.Matrix4f;
 import net.minecraft.util.math.Vec3f;
 
 public class PlayerTagRenderer<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
+  private static final MinecraftClient client = MinecraftClient.getInstance();
   private EntityRenderDispatcher dispatcher;
 
   public PlayerTagRenderer(FeatureRendererContext<T, M> context) {
@@ -37,8 +37,8 @@ public class PlayerTagRenderer<T extends LivingEntity, M extends EntityModel<T>>
       return;
     if (entity instanceof PlayerEntity) {
       PlayerEntity player = (PlayerEntity) entity;
-      if (player.getName().equals(ClientUtil.getPlayerName())) {
-        this.dispatcher = ClientUtil.getEntityDispatcher();
+      if (player.getName().equals(client.player.getName())) {
+        this.dispatcher = client.getEntityRenderDispatcher();
         matrixStack.push();
         Scoreboard scoreboard = player.getScoreboard();
         ScoreboardObjective scoreboardObjective = scoreboard.getObjectiveForSlot(2);
@@ -60,7 +60,6 @@ public class PlayerTagRenderer<T extends LivingEntity, M extends EntityModel<T>>
 
   private void renderLabelIfPresent(T entity, Text text, MatrixStack matrices, VertexConsumerProvider vertexConsumers,
       int light, float tickDelta, float headYaw, float headPitch) {
-    final MinecraftClient client = MinecraftClient.getInstance();
     boolean bl = !entity.isSneaky();
     int i = "deadmau5".equals(text.getString()) ? -10 : 0;
     matrices.push();
@@ -77,7 +76,7 @@ public class PlayerTagRenderer<T extends LivingEntity, M extends EntityModel<T>>
 
     matrices.scale(-0.025F, -0.025F, 0.025F);
     Matrix4f matrix4f = matrices.peek().getModel();
-    float g = ClientUtil.getTextBackgroundOpacity(0.25F);
+    float g = client.options.getTextBackgroundOpacity(0.25F);
     int j = (int) (g * 255.0F) << 24;
     TextRenderer textRenderer = dispatcher.getTextRenderer();
     float h = (float) (-textRenderer.getWidth(text) / 2);

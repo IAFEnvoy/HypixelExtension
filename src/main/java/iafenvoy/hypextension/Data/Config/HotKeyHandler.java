@@ -1,12 +1,12 @@
-package iafenvoy.hypextension.Config;
+package iafenvoy.hypextension.Data.Config;
 
 import fi.dy.masa.malilib.gui.GuiBase;
 import fi.dy.masa.malilib.hotkeys.IHotkeyCallback;
 import fi.dy.masa.malilib.hotkeys.IKeybind;
 import fi.dy.masa.malilib.hotkeys.KeyAction;
-import iafenvoy.hypextension.Config.GUI.OptionGUI;
-import iafenvoy.hypextension.Hud.FastGameMenu.FastGameMenuGUI;
-import iafenvoy.hypextension.Hud.FastGameMenu.GameList;
+import iafenvoy.hypextension.Data.Game.GameList;
+import iafenvoy.hypextension.GUI.FastGameMenuGUI;
+import iafenvoy.hypextension.GUI.OptionGUI;
 import net.minecraft.client.MinecraftClient;
 
 public class HotKeyHandler implements IHotkeyCallback {

@@ -5,7 +5,7 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 
-import iafenvoy.hypextension.Utils.Interface.ItemEntityRotator;
+import iafenvoy.hypextension.Render.ItemEntityRotator;
 
 @Mixin(ItemEntity.class)
 public class ItemEntityMixin implements ItemEntityRotator {

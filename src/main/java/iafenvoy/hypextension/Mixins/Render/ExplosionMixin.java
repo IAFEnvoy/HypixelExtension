@@ -1,14 +1,13 @@
 package iafenvoy.hypextension.Mixins.Render;
 
+import iafenvoy.hypextension.Data.Config.Configs;
+import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.world.explosion.Explosion;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.Slice;
-
-import iafenvoy.hypextension.Config.Configs;
-import net.minecraft.particle.DefaultParticleType;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.world.explosion.Explosion;
 
 @Mixin(Explosion.class)
 public abstract class ExplosionMixin {

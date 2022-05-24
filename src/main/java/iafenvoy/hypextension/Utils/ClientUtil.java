@@ -1,9 +1,7 @@
 package iafenvoy.hypextension.Utils;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
 
 public class ClientUtil {
   private static final MinecraftClient client = MinecraftClient.getInstance();
@@ -13,17 +11,5 @@ public class ClientUtil {
       client.player.sendChatMessage(message);
     else
       client.player.sendMessage(new LiteralText(message), false);
-  }
-
-  public static Text getPlayerName() {
-    return client.player.getName();
-  }
-
-  public static float getTextBackgroundOpacity(float opacity) {
-    return client.options.getTextBackgroundOpacity(opacity);
-  }
-
-  public static EntityRenderDispatcher getEntityDispatcher() {
-    return MinecraftClient.getInstance().getEntityRenderDispatcher();
   }
 }

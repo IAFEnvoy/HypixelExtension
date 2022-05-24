@@ -1,7 +1,13 @@
 package iafenvoy.hypextension.Mixins.GUI;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-
+import iafenvoy.hypextension.Data.Config.Configs;
+import iafenvoy.hypextension.Utils.ColorUtil;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.hud.PlayerListHud;
+import net.minecraft.client.network.PlayerListEntry;
+import net.minecraft.client.util.math.MatrixStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -10,14 +16,6 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import iafenvoy.hypextension.Config.Configs;
-import iafenvoy.hypextension.Utils.ColorUtil;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.hud.PlayerListHud;
-import net.minecraft.client.network.PlayerListEntry;
-import net.minecraft.client.util.math.MatrixStack;
 
 @Mixin(PlayerListHud.class)
 public class PlayerListHudMixin {

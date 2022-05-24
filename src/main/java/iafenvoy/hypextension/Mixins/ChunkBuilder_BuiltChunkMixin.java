@@ -1,13 +1,12 @@
 package iafenvoy.hypextension.Mixins;
 
+import iafenvoy.hypextension.Data.Config.Configs;
+import net.minecraft.client.render.chunk.ChunkBuilder;
+import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import iafenvoy.hypextension.Config.Configs;
-import net.minecraft.client.render.chunk.ChunkBuilder;
-import net.minecraft.util.math.BlockPos;
 
 @Mixin(ChunkBuilder.BuiltChunk.class)
 public abstract class ChunkBuilder_BuiltChunkMixin {
