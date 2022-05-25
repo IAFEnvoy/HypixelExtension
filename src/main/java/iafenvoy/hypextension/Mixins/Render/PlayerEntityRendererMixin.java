@@ -1,13 +1,15 @@
 package iafenvoy.hypextension.Mixins.Render;
 
 import iafenvoy.hypextension.Data.Config.Configs;
-import iafenvoy.hypextension.Render.PlayerTagRenderer;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.PlayerEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.util.Hand;
@@ -20,6 +22,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PlayerEntityRenderer.class)
 public abstract class PlayerEntityRendererMixin
     extends LivingEntityRenderer<AbstractClientPlayerEntity, PlayerEntityModel<AbstractClientPlayerEntity>> {
+  private final MinecraftClient client = MinecraftClient.getInstance();
+
   public PlayerEntityRendererMixin(EntityRenderDispatcher dispatcher,
       PlayerEntityModel<AbstractClientPlayerEntity> model, float shadowRadius) {
     super(dispatcher, model, shadowRadius);
@@ -27,7 +31,15 @@ public abstract class PlayerEntityRendererMixin
 
   @Inject(method = "<init>(Lnet/minecraft/client/render/entity/EntityRenderDispatcher;Z)V", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "net/minecraft/client/render/entity/PlayerEntityRenderer.addFeature(Lnet/minecraft/client/render/entity/feature/FeatureRenderer;)Z", ordinal = 6))
   public void postConstructor(CallbackInfo callbackInfo) {
-    this.addFeature(new PlayerTagRenderer<>(this));
+    // this.addFeature(new PlayerTagRenderer<>(super.dispatcher, this));
+  }
+
+  @Inject(method = "render", at = @At("RETURN"))
+  public void addOwnNameTag(AbstractClientPlayerEntity entity, float f, float g,
+      MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
+    if (Configs.INSTANCE.renderOwnNameTag.getBooleanValue())
+      if (entity.getEntityName().equals(client.player.getEntityName()))
+        super.renderLabelIfPresent(entity, entity.getDisplayName(), matrixStack, vertexConsumerProvider, i);
   }
 
   @Inject(method = "getArmPose", at = @At("HEAD"), cancellable = true)
