@@ -16,9 +16,4 @@ public class AutoTip implements LifeCycleEvent {
   public void execute() {
     ClientUtil.sendMessage("/tip all", true);
   }
-
-  @Override
-  public int getPeriod() {
-    return 60;
-  }
 }
