@@ -4,7 +4,7 @@ import iafenvoy.hypextension.Utils.Interface.ChatReceiveEvent;
 import java.util.HashMap;
 
 public class ChatReceive {
-  private static HashMap<String, ChatReceiveEvent> events = new HashMap<>();
+  private static final HashMap<String, ChatReceiveEvent> events = new HashMap<>();
 
   public static void registry(String id, ChatReceiveEvent event) {
     events.put(id, event);

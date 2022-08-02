@@ -4,7 +4,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import fi.dy.masa.malilib.config.ConfigUtils;
 import fi.dy.masa.malilib.config.IConfigHandler;
-import fi.dy.masa.malilib.config.options.ConfigDouble;
 import fi.dy.masa.malilib.config.options.ConfigHotkey;
 import fi.dy.masa.malilib.hotkeys.KeybindSettings;
 import fi.dy.masa.malilib.util.JsonUtils;
@@ -53,8 +52,6 @@ public class Configs implements IConfigHandler {
   // OptionButton("copyChatButton");// TODO
   // public final OptionButton headLevel = new OptionButton("headLevel"); //TODO
   // public final OptionButton timer = new OptionButton("timer");// TODO
-  // Settings
-  public final NDouble gammaValue = new NDouble("gammaValue", 16.0F, 0.0F, 128F, false);
 
   public Configs() {
     menuOpenKey.getKeybind().setCallback(new HotKeyHandler());
@@ -93,30 +90,11 @@ public class Configs implements IConfigHandler {
     }
   }
 
-  public class NDouble extends ConfigDouble {
-    private static final String MOD_ID = HypClient.MOD_ID;
-
-    public NDouble(String keyname) {
-      this(keyname, 0, Double.MIN_VALUE, Double.MAX_VALUE, false);
-    }
-
-    public NDouble(String keyname, double defaultValue, double minValue, double maxValue, boolean useSlider) {
-      super(new TranslatableText("config." + MOD_ID + "." + keyname).getString(), defaultValue, minValue, maxValue,
-          useSlider, new TranslatableText("config." + MOD_ID + "." + keyname + ".help").getString());
-      SettingGUI.configOptions.add(this);
-    }
-  }
-
   public class NHotkey extends ConfigHotkey {
-    private static final String MOD_ID = HypClient.MOD_ID;
-
-    public NHotkey(String keyname) {
-      this(keyname, "");
-    }
-
     public NHotkey(String keyname, String defaultHotkey) {
-      super(new TranslatableText("config." + MOD_ID + "." + keyname).getString(), defaultHotkey,
-          KeybindSettings.DEFAULT, new TranslatableText("config." + MOD_ID + "." + keyname + ".help").getString());
+      super(new TranslatableText("config." + HypClient.MOD_ID + "." + keyname).getString(), defaultHotkey,
+          KeybindSettings.DEFAULT,
+          new TranslatableText("config." + HypClient.MOD_ID + "." + keyname + ".help").getString());
       SettingGUI.configOptions.add(this);
     }
   }

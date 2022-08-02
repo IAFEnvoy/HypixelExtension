@@ -1,6 +1,5 @@
 package iafenvoy.hypextension.Event.Callback;
 
-import iafenvoy.hypextension.Data.Config.Configs;
 import net.minecraft.client.MinecraftClient;
 
 public class SettingCallback implements Callback {
@@ -13,7 +12,7 @@ public class SettingCallback implements Callback {
         ;
       while (client.options == null)
         ;
-      client.options.gamma = value ? Configs.INSTANCE.gammaValue.getDoubleValue() : 1.0F;
+      client.options.gamma = value ? 16.0F : 1.0F;
     }).start();
   }
 }

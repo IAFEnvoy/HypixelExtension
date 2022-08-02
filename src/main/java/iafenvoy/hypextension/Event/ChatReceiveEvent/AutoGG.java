@@ -21,7 +21,7 @@ public class AutoGG implements ChatReceiveEvent {
 
   @Override
   public void execute(String message) {
-    if (message.contains("The game starts in"))
+    if (message.contains("The game starts in") || message.contains("Sending you to"))
       prev = System.currentTimeMillis();
     if (previousMessage.contains(lineString)) {
       if (previousMessage.split(lineString).length > 2 || shouldSend) {

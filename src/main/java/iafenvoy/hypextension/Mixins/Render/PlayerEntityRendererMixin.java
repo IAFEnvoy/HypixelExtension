@@ -29,11 +29,6 @@ public abstract class PlayerEntityRendererMixin
     super(dispatcher, model, shadowRadius);
   }
 
-  @Inject(method = "<init>(Lnet/minecraft/client/render/entity/EntityRenderDispatcher;Z)V", at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "net/minecraft/client/render/entity/PlayerEntityRenderer.addFeature(Lnet/minecraft/client/render/entity/feature/FeatureRenderer;)Z", ordinal = 6))
-  public void postConstructor(CallbackInfo callbackInfo) {
-    // this.addFeature(new PlayerTagRenderer<>(super.dispatcher, this));
-  }
-
   @Inject(method = "render", at = @At("RETURN"))
   public void addOwnNameTag(AbstractClientPlayerEntity entity, float f, float g,
       MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {

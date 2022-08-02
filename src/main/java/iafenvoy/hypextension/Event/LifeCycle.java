@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LifeCycle {
-  private static HashMap<String, LifeCycleEvent> events = new HashMap<>();
+  private static final HashMap<String, LifeCycleEvent> events = new HashMap<>();
 
   public static void registry(String id, LifeCycleEvent event) {
     events.put(id, event);
@@ -18,9 +18,13 @@ public class LifeCycle {
       public void run() {
         for (LifeCycleEvent event : events.values())
           if (event.shouldExecute())
-            event.execute();
+            try {
+              event.execute();
+            } catch (Exception e) {
+              e.printStackTrace();
+            }
       }
     };
     new Timer("HypE Life Cycle").schedule(task, 0, 60000);
-  };
+  }
 }
