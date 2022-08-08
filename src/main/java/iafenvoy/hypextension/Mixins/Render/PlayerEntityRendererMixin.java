@@ -33,7 +33,7 @@ public abstract class PlayerEntityRendererMixin
   public void addOwnNameTag(AbstractClientPlayerEntity entity, float f, float g,
       MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
     if (Configs.INSTANCE.renderOwnNameTag.getBooleanValue())
-      if (entity.getEntityName().equals(client.player.getEntityName()))
+      if (client.player != null && entity.getEntityName().equals(client.player.getEntityName()))
         super.renderLabelIfPresent(entity, entity.getDisplayName(), matrixStack, vertexConsumerProvider, i);
   }
 
