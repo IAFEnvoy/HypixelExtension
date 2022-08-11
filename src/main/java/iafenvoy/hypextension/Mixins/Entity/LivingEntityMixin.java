@@ -14,15 +14,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-  public LivingEntityMixin(EntityType<?> type, World worldIn) {
-    super(type, worldIn);
-  }
+    public LivingEntityMixin(EntityType<?> type, World worldIn) {
+        super(type, worldIn);
+    }
 
-  @Inject(method = "tickStatusEffects", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/entity/data/DataTracker;get(Lnet/minecraft/entity/data/TrackedData;)Ljava/lang/Object;"), cancellable = true)
-  private void removeOwnPotionEffects(CallbackInfo ci) {
-    MinecraftClient mc = MinecraftClient.getInstance();
-    if (Configs.INSTANCE.removeOwnPotionEffects.getBooleanValue() && ((Object) this) == mc.player
-        && mc.options.getPerspective() == Perspective.FIRST_PERSON) 
-      ci.cancel();
-  }
+    @Inject(method = "tickStatusEffects", at = @At(value = "INVOKE", ordinal = 0, target = "Lnet/minecraft/entity/data/DataTracker;get(Lnet/minecraft/entity/data/TrackedData;)Ljava/lang/Object;"), cancellable = true)
+    private void removeOwnPotionEffects(CallbackInfo ci) {
+        MinecraftClient mc = MinecraftClient.getInstance();
+        if (Configs.INSTANCE.removeOwnPotionEffects.getBooleanValue() && ((Object) this) == mc.player
+                && mc.options.getPerspective() == Perspective.FIRST_PERSON)
+            ci.cancel();
+    }
 }

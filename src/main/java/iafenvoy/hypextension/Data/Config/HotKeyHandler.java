@@ -10,17 +10,17 @@ import iafenvoy.hypextension.GUI.OptionGUI;
 import net.minecraft.client.MinecraftClient;
 
 public class HotKeyHandler implements IHotkeyCallback {
-  private static final MinecraftClient client = MinecraftClient.getInstance();
+    private static final MinecraftClient client = MinecraftClient.getInstance();
 
-  @Override
-  public boolean onKeyAction(KeyAction action, IKeybind key) {
-    if (key == Configs.INSTANCE.menuOpenKey.getKeybind())
-      client.openScreen(new OptionGUI());
-    else if (key == Configs.INSTANCE.fastGameMenuKey.getKeybind()) {
-      if (Configs.INSTANCE.fastGameMenu.getBooleanValue())
-        GuiBase.openGui(new FastGameMenuGUI(GameList.INSTANCE.DATA, null));
-    } else
-      System.out.print("Unknown HotKey");
-    return true;
-  }
+    @Override
+    public boolean onKeyAction(KeyAction action, IKeybind key) {
+        if (key == Configs.INSTANCE.menuOpenKey.getKeybind())
+            client.openScreen(new OptionGUI());
+        else if (key == Configs.INSTANCE.fastGameMenuKey.getKeybind()) {
+            if (Configs.INSTANCE.fastGameMenu.getBooleanValue())
+                GuiBase.openGui(new FastGameMenuGUI(GameList.INSTANCE.DATA, null));
+        } else
+            System.out.print("Unknown HotKey");
+        return true;
+    }
 }

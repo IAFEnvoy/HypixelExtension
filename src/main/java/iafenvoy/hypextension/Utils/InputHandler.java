@@ -10,76 +10,72 @@ import net.minecraft.client.input.Input;
 import net.minecraft.client.option.GameOptions;
 
 public class InputHandler implements IKeybindProvider, IKeyboardInputHandler {
-  public static final InputHandler INSTANCE = new InputHandler();
-  private static final MinecraftClient client = MinecraftClient.getInstance();
-  private LeftRight lastSidewaysInput = LeftRight.NONE;
-  private ForwardBack lastForwardInput = ForwardBack.NONE;
+    public static final InputHandler INSTANCE = new InputHandler();
+    private static final MinecraftClient client = MinecraftClient.getInstance();
+    private LeftRight lastSidewaysInput = LeftRight.NONE;
+    private ForwardBack lastForwardInput = ForwardBack.NONE;
 
-  public InputHandler() {
-    super();
-  }
+    @Override
+    public boolean onKeyInput(int keyCode, int scanCode, int modifiers, boolean eventKeyState) {
+        if (GuiUtils.getCurrentScreen() == null && eventKeyState)
+            this.storeLastMovementDirection(keyCode, scanCode);
+        return false;
+    }
 
-  @Override
-  public boolean onKeyInput(int keyCode, int scanCode, int modifiers, boolean eventKeyState) {
-    if (GuiUtils.getCurrentScreen() == null && eventKeyState)
-      this.storeLastMovementDirection(keyCode, scanCode);
-    return false;
-  }
+    private void storeLastMovementDirection(int eventKey, int scanCode) {
+        if (client.options.keyForward.matchesKey(eventKey, scanCode))
+            this.lastForwardInput = ForwardBack.FORWARD;
+        else if (client.options.keyBack.matchesKey(eventKey, scanCode))
+            this.lastForwardInput = ForwardBack.BACK;
+        else if (client.options.keyLeft.matchesKey(eventKey, scanCode))
+            this.lastSidewaysInput = LeftRight.LEFT;
+        else if (client.options.keyRight.matchesKey(eventKey, scanCode))
+            this.lastSidewaysInput = LeftRight.RIGHT;
+    }
 
-  private void storeLastMovementDirection(int eventKey, int scanCode) {
-    if (client.options.keyForward.matchesKey(eventKey, scanCode))
-      this.lastForwardInput = ForwardBack.FORWARD;
-    else if (client.options.keyBack.matchesKey(eventKey, scanCode))
-      this.lastForwardInput = ForwardBack.BACK;
-    else if (client.options.keyLeft.matchesKey(eventKey, scanCode))
-      this.lastSidewaysInput = LeftRight.LEFT;
-    else if (client.options.keyRight.matchesKey(eventKey, scanCode))
-      this.lastSidewaysInput = LeftRight.RIGHT;
-  }
+    public void handleMovementKeys(Input movement) {
+        GameOptions settings = client.options;
+        if (settings.keyLeft.isPressed() && settings.keyRight.isPressed())
+            if (this.lastSidewaysInput == LeftRight.LEFT) {
+                movement.movementSideways = 1;
+                movement.pressingLeft = true;
+                movement.pressingRight = false;
+            } else if (this.lastSidewaysInput == LeftRight.RIGHT) {
+                movement.movementSideways = -1;
+                movement.pressingLeft = false;
+                movement.pressingRight = true;
+            }
+        if (settings.keyBack.isPressed() && settings.keyForward.isPressed())
+            if (this.lastForwardInput == ForwardBack.FORWARD) {
+                movement.movementForward = 1;
+                movement.pressingForward = true;
+                movement.pressingBack = false;
+            } else if (this.lastForwardInput == ForwardBack.BACK) {
+                movement.movementForward = -1;
+                movement.pressingForward = false;
+                movement.pressingBack = true;
+            }
+    }
 
-  public void handleMovementKeys(Input movement) {
-    GameOptions settings = client.options;
-    if (settings.keyLeft.isPressed() && settings.keyRight.isPressed())
-      if (this.lastSidewaysInput == LeftRight.LEFT) {
-        movement.movementSideways = 1;
-        movement.pressingLeft = true;
-        movement.pressingRight = false;
-      } else if (this.lastSidewaysInput == LeftRight.RIGHT) {
-        movement.movementSideways = -1;
-        movement.pressingLeft = false;
-        movement.pressingRight = true;
-      }
-    if (settings.keyBack.isPressed() && settings.keyForward.isPressed())
-      if (this.lastForwardInput == ForwardBack.FORWARD) {
-        movement.movementForward = 1;
-        movement.pressingForward = true;
-        movement.pressingBack = false;
-      } else if (this.lastForwardInput == ForwardBack.BACK) {
-        movement.movementForward = -1;
-        movement.pressingForward = false;
-        movement.pressingBack = true;
-      }
-  }
+    @Override
+    public void addHotkeys(IKeybindManager manager) {
+    }
 
-  @Override
-  public void addHotkeys(IKeybindManager manager) {
-  }
+    @Override
+    public void addKeysToMap(IKeybindManager manager) {
+        manager.addKeybindToMap(Configs.INSTANCE.menuOpenKey.getKeybind());
+        manager.addKeybindToMap(Configs.INSTANCE.fastGameMenuKey.getKeybind());
+    }
 
-  @Override
-  public void addKeysToMap(IKeybindManager manager) {
-    manager.addKeybindToMap(Configs.INSTANCE.menuOpenKey.getKeybind());
-    manager.addKeybindToMap(Configs.INSTANCE.fastGameMenuKey.getKeybind());
-  }
+    public enum LeftRight {
+        NONE,
+        LEFT,
+        RIGHT
+    }
 
-  public enum LeftRight {
-    NONE,
-    LEFT,
-    RIGHT
-  }
-
-  public enum ForwardBack {
-    NONE,
-    FORWARD,
-    BACK
-  }
+    public enum ForwardBack {
+        NONE,
+        FORWARD,
+        BACK
+    }
 }

@@ -15,10 +15,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(HeldItemRenderer.class)
 public class HeldItemRendererMixin {
-  @Inject(method = "renderItem", at = @At("HEAD"), cancellable = true)
-  private void render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
-      MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo info) {
-    if (Configs.INSTANCE.sword_1_8_9.getBooleanValue() && stack.getItem() instanceof ShieldItem && leftHanded)
-      info.cancel();
-  }
+    @Inject(method = "renderItem*", at = @At("HEAD"), cancellable = true)
+    private void render(LivingEntity entity, ItemStack stack, ModelTransformation.Mode renderMode, boolean leftHanded,
+                        MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo info) {
+        if (Configs.INSTANCE.sword_1_8_9.getBooleanValue() && stack.getItem() instanceof ShieldItem && leftHanded)
+            info.cancel();
+    }
 }

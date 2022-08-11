@@ -12,13 +12,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
-  protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
-    super(entityType, world);
-  }
+    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
+        super(entityType, world);
+    }
 
-  @Inject(method = "method_30263", at = @At("HEAD"), cancellable = true)
-  private void restore_1_15_2_sneaking(CallbackInfoReturnable<Boolean> cir) {
-    if (Configs.INSTANCE.sneak_1_15_2.getBooleanValue())
-      cir.setReturnValue(this.onGround);
-  }
+    @Inject(method = "method_30263", at = @At("HEAD"), cancellable = true)
+    private void restore_1_15_2_sneaking(CallbackInfoReturnable<Boolean> cir) {
+        if (Configs.INSTANCE.sneak_1_15_2.getBooleanValue())
+            cir.setReturnValue(this.onGround);
+    }
 }

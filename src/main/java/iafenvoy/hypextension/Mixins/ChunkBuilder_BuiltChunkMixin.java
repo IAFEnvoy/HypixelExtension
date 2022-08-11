@@ -10,9 +10,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ChunkBuilder.BuiltChunk.class)
 public abstract class ChunkBuilder_BuiltChunkMixin {
-  @Inject(method = "isChunkNonEmpty", at = @At("HEAD"), cancellable = true)
-  private void allowEdgeChunksToRender(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-    if (Configs.INSTANCE.renderEdgeChunks.getBooleanValue())
-      cir.setReturnValue(true);
-  }
+    @Inject(method = "isChunkNonEmpty", at = @At("HEAD"), cancellable = true)
+    private void allowEdgeChunksToRender(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+        if (Configs.INSTANCE.renderEdgeChunks.getBooleanValue())
+            cir.setReturnValue(true);
+    }
 }

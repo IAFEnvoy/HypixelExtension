@@ -13,9 +13,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(KeyboardInput.class)
 public abstract class KeyboardInputMixin extends Input {
-  @Inject(method = "tick(Z)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/input/KeyboardInput;sneaking:Z", ordinal = 0, shift = Shift.AFTER, opcode = Opcodes.PUTFIELD))
-  private void customMovement(boolean val1, CallbackInfo ci) {
-    if (Configs.INSTANCE.movementKeysLast.getBooleanValue())
-      InputHandler.INSTANCE.handleMovementKeys(this);
-  }
+    @Inject(method = "tick(Z)V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/input/KeyboardInput;sneaking:Z", ordinal = 0, shift = Shift.AFTER, opcode = Opcodes.PUTFIELD))
+    private void customMovement(boolean val1, CallbackInfo ci) {
+        if (Configs.INSTANCE.movementKeysLast.getBooleanValue())
+            InputHandler.INSTANCE.handleMovementKeys(this);
+    }
 }
