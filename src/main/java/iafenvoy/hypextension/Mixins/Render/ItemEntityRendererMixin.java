@@ -53,14 +53,13 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
     protected abstract int getRenderedAmount(ItemStack stack);
 
     @Inject(method = "<init>", at = @At("RETURN"))
-    private void onConstructor(EntityRenderDispatcher dispatcher, ItemRenderer renderer, CallbackInfo callback) {
+    private void onConstructor(EntityRenderDispatcher dispatcher, ItemRenderer renderer, CallbackInfo ci) {
         if (Configs.INSTANCE.betterDropItem.getBooleanValue())
             this.shadowRadius = 0;
     }
 
     @Inject(method = "render*", at = @At("HEAD"), cancellable = true)
-    private void render(ItemEntity dropped, float f, float partialTicks, MatrixStack matrix,
-                        VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo callback) {
+    private void render(ItemEntity dropped, float f, float partialTicks, MatrixStack matrix, VertexConsumerProvider provider, int i, CallbackInfo ci) {
         if (Configs.INSTANCE.betterDropItem.getBooleanValue()) {
             matrix.push();
             ItemStack itemStack = dropped.getStack();
@@ -198,7 +197,7 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
                         matrix.multiply(Vec3f.POSITIVE_Z.getRadialQuaternion(this.random.nextFloat()));
                     }
                 // render item
-                this.itemRenderer.renderItem(itemStack, ModelTransformation.Mode.GROUND, false, matrix, vertexConsumerProvider,
+                this.itemRenderer.renderItem(itemStack, ModelTransformation.Mode.GROUND, false, matrix, provider,
                         i, OverlayTexture.DEFAULT_UV, bakedModel);
                 // end
                 matrix.pop();
@@ -209,8 +208,8 @@ public abstract class ItemEntityRendererMixin extends EntityRenderer<ItemEntity>
             }
             // end
             matrix.pop();
-            super.render(dropped, f, partialTicks, matrix, vertexConsumerProvider, i);
-            callback.cancel();
+            super.render(dropped, f, partialTicks, matrix, provider, i);
+            ci.cancel();
         }
     }
 }

@@ -18,11 +18,8 @@ public class BlockEntityRenderDispatcherMixin {
     private <E extends BlockEntity> void get(E blockEntity, CallbackInfoReturnable<BlockEntityRenderer<E>> cir) {
         if (Configs.INSTANCE.fastChestRender.getBooleanValue()) {
             Class<?> beClass = blockEntity.getClass();
-            if (beClass == ChestBlockEntity.class ||
-                    beClass == TrappedChestBlockEntity.class ||
-                    beClass == EnderChestBlockEntity.class) {
+            if (beClass == ChestBlockEntity.class || beClass == TrappedChestBlockEntity.class || beClass == EnderChestBlockEntity.class)
                 cir.setReturnValue(null);
-            }
         }
     }
 

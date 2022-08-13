@@ -7,7 +7,6 @@
     "Block.ChestBlockMixin",
     "Block.EnderChestBlockMixin",
     "Entity.ItemEntityMixin",
-    "Entity.LivingEntityMixin",
     "Entity.PlayerEntityMixin",
     "Entity.TNTEntityMixin",
     "GUI.ChatHudMixin",

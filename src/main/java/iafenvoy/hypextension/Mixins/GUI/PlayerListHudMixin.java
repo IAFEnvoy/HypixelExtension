@@ -31,8 +31,7 @@ public class PlayerListHudMixin {
     }
 
     @Inject(method = "renderLatencyIcon", at = @At("HEAD"))
-    private void addPingRender(MatrixStack matrices, int x, int offsetX, int y, PlayerListEntry player,
-                               CallbackInfo info) {
+    private void addPingRender(MatrixStack matrices, int x, int offsetX, int y, PlayerListEntry player, CallbackInfo info) {
         if (Configs.INSTANCE.betterPingShow.getBooleanValue()) {
             TextRenderer textRenderer = client.textRenderer;
             String pingString = String.format("%dms", player.getLatency());

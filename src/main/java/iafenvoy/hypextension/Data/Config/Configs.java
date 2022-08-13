@@ -33,7 +33,6 @@ public class Configs implements IConfigHandler {
     public final OptionButton f3Cursor = new OptionButton("f3Cursor");
     public final OptionButton playerListAlwaysOn = new OptionButton("playerListAlwaysOn");
     public final OptionButton renderEdgeChunks = new OptionButton("renderEdgeChunks");
-    public final OptionButton removeOwnPotionEffects = new OptionButton("removeOwnPotionEffects");
     public final OptionButton tntCountDown = new OptionButton("tntCountDown");
     public final OptionButton fastGameMenu = new OptionButton("fastGameMenu");
     public final OptionButton renderOwnNameTag = new OptionButton("renderOwnNameTag");

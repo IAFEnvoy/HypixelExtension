@@ -27,14 +27,13 @@ public abstract class ChatHudMixin extends DrawableHelper {
     }
 
     @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;IIZ)V", at = @At("HEAD"), argsOnly = true)
-    private Text addMessageHandler(Text componentIn) {
-        ChatReceive.onChatReceive(componentIn.getString());
+    private Text addMessageHandler(Text text) {
+        ChatReceive.onChatReceive(text.getString());
         if (Configs.INSTANCE.chatTimeStamp.getBooleanValue()) {
-            LiteralText newComponent = new LiteralText(
-                    new SimpleDateFormat("[HH:mm:ss]").format(new Date(System.currentTimeMillis())) + " ");
-            newComponent.append(componentIn);
-            return newComponent;
+            LiteralText newText = new LiteralText(new SimpleDateFormat("[HH:mm:ss]").format(new Date(System.currentTimeMillis())) + " ");
+            newText.append(text);
+            return newText;
         }
-        return componentIn;
+        return text;
     }
 }

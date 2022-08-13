@@ -30,12 +30,11 @@ public abstract class PlayerEntityRendererMixin
     }
 
     @Inject(method = "getArmPose", at = @At("HEAD"), cancellable = true)
-    private static void getArmPose(AbstractClientPlayerEntity abstractClientPlayerEntity, Hand hand,
-                                   CallbackInfoReturnable<BipedEntityModel.ArmPose> cir) {
+    private static void getArmPose(AbstractClientPlayerEntity player, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> cir) {
         if (Configs.INSTANCE.sword_1_8_9.getBooleanValue()) {
-            ItemStack itemStack = abstractClientPlayerEntity.getStackInHand(hand);
-            ItemStack itemStack2 = abstractClientPlayerEntity.getOffHandStack();
-            if (itemStack2.getItem() instanceof ShieldItem && abstractClientPlayerEntity.isUsingItem())
+            ItemStack itemStack = player.getStackInHand(hand);
+            ItemStack itemStack2 = player.getOffHandStack();
+            if (itemStack2.getItem() instanceof ShieldItem && player.isUsingItem())
                 cir.setReturnValue(BipedEntityModel.ArmPose.BLOCK);
             if (itemStack.getItem() instanceof ShieldItem)
                 cir.setReturnValue(BipedEntityModel.ArmPose.EMPTY);
@@ -43,10 +42,12 @@ public abstract class PlayerEntityRendererMixin
     }
 
     @Inject(method = "render*", at = @At("RETURN"))
-    public void addOwnNameTag(AbstractClientPlayerEntity entity, float f, float g,
-                              MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci) {
+    public void addOwnNameTag(AbstractClientPlayerEntity entity, float f, float g, MatrixStack matrices, VertexConsumerProvider provider, int i, CallbackInfo ci) {
         if (Configs.INSTANCE.renderOwnNameTag.getBooleanValue())
             if (client.player != null && entity.getEntityName().equals(client.player.getEntityName()))
-                super.renderLabelIfPresent(entity, entity.getDisplayName(), matrixStack, vertexConsumerProvider, i);
+                try {
+                    super.renderLabelIfPresent(entity, entity.getDisplayName(), matrices, provider, i);
+                } catch (Exception ignored) {
+                }
     }
 }

@@ -24,12 +24,12 @@ public class HypClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        logger.info("[Hypixel Extension] Initializing");
-
         if (!FabricLoader.getInstance().isModLoaded("malilib")) {
             logger.fatal("Malilib is not loaded, please download it.");
             return;
         }
+
+        logger.info("[Hypixel Extension] Initializing");
 
         ConfigManager.getInstance().registerConfigHandler(MOD_ID, Configs.INSTANCE);
         Configs.INSTANCE.load();

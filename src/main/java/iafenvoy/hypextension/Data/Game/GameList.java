@@ -13,7 +13,6 @@ import java.util.List;
 
 public class GameList {
     public static final GameList INSTANCE = new GameList();
-    // back button object
     public static final MiniGame BACK = new MiniGame(" < Back", "", new ArrayList<>());
     public static final MiniGame LOBBY = new MiniGame("Lobby", "", new ArrayList<>());
 
