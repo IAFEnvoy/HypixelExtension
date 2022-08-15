@@ -51,4 +51,44 @@ public class ColorUtil {
     static int getBlue(int color) {
         return color & 0xFF;
     }
+
+    public static String getColorByName(String name) {
+        name = name.toLowerCase();
+        switch (name) {
+            case "black":
+                return "§0";
+            case "dark_blue":
+                return "§1";
+            case "dark_green":
+                return "§2";
+            case "dark_aqua":
+                return "§3";
+            case "dark_red":
+                return "§4";
+            case "dark_purple":
+                return "§5";
+            case "gold":
+                return "§6";
+            case "gray":
+                return "§7";
+            case "dark_gray":
+                return "§8";
+            case "blue":
+                return "§9";
+            case "green":
+                return "§a";
+            case "aqua":
+                return "§b";
+            case "red":
+                return "§c";
+            case "light_purple":
+                return "§d";
+            case "yellow":
+                return "§e";
+            case "white":
+                return "§f";
+            default:
+                return "";
+        }
+    }
 }

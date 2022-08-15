@@ -32,5 +32,7 @@
   "config.hypextension.forceCloseLoadingScreen":"异步加载地形",
   "config.hypextension.extendHistorySize":"增加消息记录缓存",
   "config.hypextension.saveChatHistory":"保留消息历史记录",
-  "config.hypextension.scoreboardFix":"计分板右侧分数隐藏"
+  "config.hypextension.scoreboardFix":"计分板右侧分数隐藏",
+  "config.hypextension.copyChatButton":"复制聊天内容按钮",
+  "hypextension.copyToClipboard": "复制到剪贴板"
 }

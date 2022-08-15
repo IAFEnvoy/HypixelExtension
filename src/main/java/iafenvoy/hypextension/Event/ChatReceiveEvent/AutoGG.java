@@ -3,9 +3,9 @@ package iafenvoy.hypextension.Event.ChatReceiveEvent;
 import iafenvoy.hypextension.Data.Config.Configs;
 import iafenvoy.hypextension.Data.Game.MiniGame;
 import iafenvoy.hypextension.Utils.ClientUtil;
-import iafenvoy.hypextension.Utils.Interface.ChatReceiveEvent;
+import iafenvoy.hypextension.Event.Event;
 
-public class AutoGG implements ChatReceiveEvent {
+public class AutoGG implements Event.ChatReceiveEvent {
     public static final AutoGG INSTANCE = new AutoGG();
     private static final String lineString = "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬";
     private static String previousMessage = "";

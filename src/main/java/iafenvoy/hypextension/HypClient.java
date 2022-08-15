@@ -8,6 +8,7 @@ import iafenvoy.hypextension.Event.ChatReceiveEvent.AutoFriend;
 import iafenvoy.hypextension.Event.ChatReceiveEvent.AutoGG;
 import iafenvoy.hypextension.Event.LifeCycle;
 import iafenvoy.hypextension.Event.LifeCycleEvent.AutoTip;
+import iafenvoy.hypextension.Searcher.Commands;
 import iafenvoy.hypextension.Utils.InputHandler;
 import iafenvoy.hypextension.Utils.ItemsUtil;
 import net.fabricmc.api.ClientModInitializer;
@@ -28,7 +29,6 @@ public class HypClient implements ClientModInitializer {
             logger.fatal("Malilib is not loaded, please download it.");
             return;
         }
-
         logger.info("[Hypixel Extension] Initializing");
 
         ConfigManager.getInstance().registerConfigHandler(MOD_ID, Configs.INSTANCE);
@@ -42,5 +42,7 @@ public class HypClient implements ClientModInitializer {
 
         LifeCycle.register("autotip", AutoTip.INSTANCE);
         LifeCycle.startLifeCycle();
+
+        Commands.register();
     }
 }

@@ -1,15 +1,13 @@
 package iafenvoy.hypextension.Event;
 
-import iafenvoy.hypextension.Utils.Interface.LifeCycleEvent;
-
 import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class LifeCycle {
-    private static final HashMap<String, LifeCycleEvent> events = new HashMap<>();
+    private static final HashMap<String, Event.LifeCycleEvent> events = new HashMap<>();
 
-    public static void register(String id, LifeCycleEvent event) {
+    public static void register(String id, Event.LifeCycleEvent event) {
         events.put(id, event);
     }
 
@@ -17,7 +15,7 @@ public class LifeCycle {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                for (LifeCycleEvent event : events.values())
+                for (Event.LifeCycleEvent event : events.values())
                     if (event.shouldExecute())
                         try {
                             event.execute();

@@ -2,9 +2,9 @@ package iafenvoy.hypextension.Event.ChatReceiveEvent;
 
 import iafenvoy.hypextension.Data.Config.Configs;
 import iafenvoy.hypextension.Utils.ClientUtil;
-import iafenvoy.hypextension.Utils.Interface.ChatReceiveEvent;
+import iafenvoy.hypextension.Event.Event;
 
-public class AutoFriend implements ChatReceiveEvent {
+public class AutoFriend implements Event.ChatReceiveEvent {
     public static final AutoFriend INSTANCE = new AutoFriend();
     public static final String lineString = "[ACCEPT] - [DENY] - [IGNORE]";
 

@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import iafenvoy.hypextension.Utils.FileUtils;
+import iafenvoy.hypextension.Utils.FileUtil;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -22,7 +22,7 @@ public class GameList {
         List<MiniGame> temp = new ArrayList<>();
         try {
             InputStream listFile = this.getClass().getResourceAsStream("/hypixel_games.json");
-            String data = FileUtils.readByLines(new InputStreamReader(listFile));
+            String data = FileUtil.readByLines(new InputStreamReader(listFile));
             JsonArray json = new JsonParser().parse(data).getAsJsonArray();
             for (JsonElement o : json)
                 temp.add(miniGameJsonDFS(o.getAsJsonObject()));

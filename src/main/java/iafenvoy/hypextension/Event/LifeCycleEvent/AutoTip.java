@@ -2,9 +2,9 @@ package iafenvoy.hypextension.Event.LifeCycleEvent;
 
 import iafenvoy.hypextension.Data.Config.Configs;
 import iafenvoy.hypextension.Utils.ClientUtil;
-import iafenvoy.hypextension.Utils.Interface.LifeCycleEvent;
+import iafenvoy.hypextension.Event.Event;
 
-public class AutoTip implements LifeCycleEvent {
+public class AutoTip implements Event.LifeCycleEvent {
     public static final AutoTip INSTANCE = new AutoTip();
 
     @Override
