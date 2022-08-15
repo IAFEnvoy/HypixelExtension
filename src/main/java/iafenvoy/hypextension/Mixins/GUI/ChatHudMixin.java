@@ -4,8 +4,7 @@ import iafenvoy.hypextension.Data.Config.Configs;
 import iafenvoy.hypextension.Event.ChatReceive;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.ChatHud;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.Text;
+import net.minecraft.text.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -29,6 +28,16 @@ public abstract class ChatHudMixin extends DrawableHelper {
     @ModifyVariable(method = "addMessage(Lnet/minecraft/text/Text;IIZ)V", at = @At("HEAD"), argsOnly = true)
     private Text addMessageHandler(Text text) {
         ChatReceive.onChatReceive(text.getString());
+        if (Configs.INSTANCE.copyChatButton.getBooleanValue())
+            if (text instanceof MutableText) {
+                LiteralText copyButton = new LiteralText(" [C]");
+                Style style = Style.EMPTY;
+                style = style.withColor(TextColor.parse("#888888"));
+                style = style.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, text.getString()));
+                style = style.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableText("hypextension.copyToClipboard")));
+                copyButton.setStyle(style);
+                ((MutableText) text).append(copyButton);
+            }
         if (Configs.INSTANCE.chatTimeStamp.getBooleanValue()) {
             LiteralText newText = new LiteralText(new SimpleDateFormat("[HH:mm:ss]").format(new Date(System.currentTimeMillis())) + " ");
             newText.append(text);

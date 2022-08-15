@@ -44,13 +44,12 @@ public class Configs implements IConfigHandler {
     public final OptionButton extendHistorySize = new OptionButton("extendHistorySize");
     public final OptionButton saveChatHistory = new OptionButton("saveChatHistory");
     public final OptionButton scoreboardFix = new OptionButton("scoreboardFix");
+    public final OptionButton copyChatButton = new OptionButton("copyChatButton");// TODO
+    // public final OptionButton headLevel = new OptionButton("headLevel"); //TODO
+    // public final OptionButton timer = new OptionButton("timer");// TODO
     private final String OPTIONS_PATH = "./config/hypextension/options.json";
     private final String SETTINGS_PATH = "./config/hypextension/settings.json";
     private final File CONFIG_DIR = new File("./config/hypextension");
-    // public final OptionButton copyChatButton = new
-    // OptionButton("copyChatButton");// TODO
-    // public final OptionButton headLevel = new OptionButton("headLevel"); //TODO
-    // public final OptionButton timer = new OptionButton("timer");// TODO
 
     public Configs() {
         menuOpenKey.getKeybind().setCallback(new HotKeyHandler());
