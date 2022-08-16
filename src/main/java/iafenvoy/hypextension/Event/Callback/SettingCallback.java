@@ -7,12 +7,6 @@ public class SettingCallback implements Callback {
 
     @Override
     public void onValueChanged(boolean value) {
-        new Thread(() -> {
-            while (client == null)
-                ;
-            while (client.options == null)
-                ;
-            client.options.gamma = value ? 16.0F : 1.0F;
-        }).start();
+
     }
 }

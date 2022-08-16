@@ -50,10 +50,12 @@ public class SearcherGUI extends GuiBase {
             });
             y += tab.getHeight() + 2;
         }
-        this.addText(80, 5, 100, 20, 1.5F, Collections.singletonList(info.getNameWithRank()));
-        this.addText(120, 20, 100, 100, 1, HypixelDataParser.getRoot(info.getMain()));
 
-        this.addText(300, 20, 100, 100, 1, HypixelDataParser.getGuild(this.info.getGuild()));
+        this.addText(80, 5, 100, 20, 1.5F, Collections.singletonList(info.getNameWithRank()));
+        this.addText(120, 25, 100, 100, 1, HypixelDataParser.getRoot(info.getMain()));
+
+        this.addText(300, 25, 100, 100, 1, HypixelDataParser.getGuild(this.info.getGuild(), this.info.getMain().getValue("uuid").getAsString()));
+        this.addText(300, 120, 100, 100, 1, HypixelDataParser.getStatus(this.info.getStatus()));
 
         this.addText(80, 75, 100, 20, 1.5F, Collections.singletonList(currentTab.getText()));
         this.addText(120, 130, 100, 100, 1, currentTab.getData(this.info.getMain()));
@@ -79,10 +81,10 @@ public class SearcherGUI extends GuiBase {
     @Override
     protected void drawWidgets(int mouseX, int mouseY, MatrixStack matrices) {
         this.detectResize();
-        for (FontSizeableLabel label : this.label) {
-            final float scale = label.getFontScale(this.scale);
+        for (int i = 0; i < this.label.size(); i++) {
+            final float scale = this.label.get(i).getFontScale(this.scale);
             matrices.scale(scale, scale, scale);
-            label.render(matrices);
+            this.label.get(i).render(matrices);
             matrices.scale(1.0F / scale, 1.0F / scale, 1.0F / scale);
         }
     }
@@ -117,7 +119,8 @@ public class SearcherGUI extends GuiBase {
         SkyWars("Sky Wars", data -> HypixelDataParser.getSkyWars(data)),
         MurderMystery("Murder Mystery", data -> HypixelDataParser.getMurderMystery(data)),
         Duel("Duel", data -> HypixelDataParser.getDuel(data)),
-        UHC("UHC", data -> HypixelDataParser.getUhc(data));
+        UHC("UHC", data -> HypixelDataParser.getUhc(data)),
+        MegaWall("Mega Wall", data -> HypixelDataParser.getMegaWall(data));
 
         private final String key;
         private final Callback callback;

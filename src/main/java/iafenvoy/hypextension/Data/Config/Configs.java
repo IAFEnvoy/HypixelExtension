@@ -7,16 +7,17 @@ import fi.dy.masa.malilib.config.IConfigHandler;
 import fi.dy.masa.malilib.config.options.ConfigHotkey;
 import fi.dy.masa.malilib.hotkeys.KeybindSettings;
 import fi.dy.masa.malilib.util.JsonUtils;
-import iafenvoy.hypextension.Event.Callback.SettingCallback;
 import iafenvoy.hypextension.GUI.OptionGUI;
 import iafenvoy.hypextension.GUI.OptionGUI.OptionButton;
 import iafenvoy.hypextension.GUI.SettingGUI;
 import iafenvoy.hypextension.HypClient;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TranslatableText;
 
 import java.io.File;
 
 public class Configs implements IConfigHandler {
+    public static final MinecraftClient client = MinecraftClient.getInstance();
     public static final Configs INSTANCE = new Configs();
     // Hotkeys
     public final NHotkey menuOpenKey = new NHotkey("menuOpenKey", "F6");
@@ -54,7 +55,10 @@ public class Configs implements IConfigHandler {
     public Configs() {
         menuOpenKey.getKeybind().setCallback(new HotKeyHandler());
         fastGameMenuKey.getKeybind().setCallback(new HotKeyHandler());
-        gammaOverride.setValueChangeCallback(new SettingCallback());
+        gammaOverride.setValueChangeCallback(value -> {
+            if (client != null && client.options != null)
+                client.options.gamma = value ? 16.0F : 1.0F;
+        });
     }
 
     @Override

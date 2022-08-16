@@ -44,14 +44,6 @@ public class DataBase {
         return this.values.containsKey(key);
     }
 
-    public DataBase copy(String prefix) {
-        final HashMap<String, JsonElement> map = new HashMap<>();
-        for (String key : values.keySet())
-            if (key.startsWith(prefix + "."))
-                map.put(key.substring(key.length() + 1), values.get(key));
-        return new DataBase(map);
-    }
-
     public boolean isEmpty() {
         return this.values.isEmpty();
     }

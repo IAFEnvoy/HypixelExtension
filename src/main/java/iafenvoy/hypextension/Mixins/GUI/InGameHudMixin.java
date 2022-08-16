@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+@SuppressWarnings("ALL")
 @Mixin(InGameHud.class)
 public abstract class InGameHudMixin extends DrawableHelper {
     @Shadow
@@ -40,6 +41,7 @@ public abstract class InGameHudMixin extends DrawableHelper {
             float partialTicks = this.client.getTickDelta();
             RenderSystem.translated(width / 2, height / 2, this.getZOffset());
             Entity entity = client.getCameraEntity();
+            assert entity != null;
             RenderSystem.rotatef(entity.prevPitch + (entity.pitch - entity.prevPitch) * partialTicks, -1.0F, 0.0F, 0.0F);
             RenderSystem.rotatef(entity.prevYaw + (entity.yaw - entity.prevYaw) * partialTicks, 0.0F, 1.0F, 0.0F);
             RenderSystem.scalef(-1.0F, -1.0F, -1.0F);
@@ -52,6 +54,7 @@ public abstract class InGameHudMixin extends DrawableHelper {
     @Inject(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/PlayerListHud;tick(Z)V", ordinal = 1, shift = At.Shift.AFTER))
     private void alwaysRenderPlayerList(MatrixStack matrices, float tick, CallbackInfo ci) {
         if (Configs.INSTANCE.playerListAlwaysOn.getBooleanValue()) {
+            assert this.client.world != null;
             Scoreboard scoreboard = this.client.world.getScoreboard();
             ScoreboardObjective objective = scoreboard.getObjectiveForSlot(0);
             this.playerListHud.tick(true);

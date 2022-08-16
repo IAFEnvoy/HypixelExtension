@@ -39,7 +39,7 @@ public class HypixelInfo {
     }
 
     public String getNameWithRank() {
-        return this.getRank() + playerName + "§f";
+        return this.getRank() + playerName + " " + this.getGuildTag() + "§f";
     }
 
     private String getRank() {
@@ -77,5 +77,17 @@ public class HypixelInfo {
         } catch (Exception e) {
             return "§7";
         }
+    }
+
+    private String getGuildTag() {
+        if (this.guild.hasValue("tagColor") && this.guild.hasValue("tag"))
+            try {
+                String color = this.guild.getValue("tagColor").getAsString();
+                String tag = this.guild.getValue("tag").getAsString();
+                return ColorUtil.getColorByName(color) + "[" + tag + "]";
+            } catch (Exception e) {
+                return "";
+            }
+        return "";
     }
 }

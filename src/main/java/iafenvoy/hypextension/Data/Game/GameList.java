@@ -14,7 +14,7 @@ import java.util.List;
 public class GameList {
     public static final GameList INSTANCE = new GameList();
     public static final MiniGame BACK = new MiniGame(" < Back", "", new ArrayList<>());
-    public static final MiniGame LOBBY = new MiniGame("Lobby", "", new ArrayList<>());
+//    public static final MiniGame LOBBY = new MiniGame("Lobby", "", new ArrayList<>());
 
     public final List<MiniGame> DATA;
 
@@ -22,6 +22,7 @@ public class GameList {
         List<MiniGame> temp = new ArrayList<>();
         try {
             InputStream listFile = this.getClass().getResourceAsStream("/hypixel_games.json");
+            assert listFile != null;
             String data = FileUtil.readByLines(new InputStreamReader(listFile));
             JsonArray json = new JsonParser().parse(data).getAsJsonArray();
             for (JsonElement o : json)
