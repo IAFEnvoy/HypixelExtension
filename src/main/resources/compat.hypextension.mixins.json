@@ -1,10 +1,10 @@
 {
   "required": true,
   "minVersion": "0.7",
-  "package": "iafenvoy.hypextension.Mixins",
+  "package": "iafenvoy.hypextension.mixins",
   "compatibilityLevel": "JAVA_8",
   "client": [
-    "Compat.ScoreboardHudMixin"
+    "compat.ScoreboardHudMixin"
   ],
   "injectors": {
     "defaultRequire": 1

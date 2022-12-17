@@ -34,5 +34,6 @@
   "config.hypextension.saveChatHistory":"保留消息历史记录",
   "config.hypextension.scoreboardFix":"计分板右侧分数隐藏",
   "config.hypextension.copyChatButton":"复制聊天内容按钮",
+  "config.hypextension.toolTipFix":"标签显示修复",
   "hypextension.copyToClipboard": "复制到剪贴板"
 }

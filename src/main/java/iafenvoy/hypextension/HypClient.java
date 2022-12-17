@@ -2,15 +2,11 @@ package iafenvoy.hypextension;
 
 import fi.dy.masa.malilib.config.ConfigManager;
 import fi.dy.masa.malilib.event.InputEventHandler;
-import iafenvoy.hypextension.Data.Config.Configs;
-import iafenvoy.hypextension.Event.ChatReceive;
-import iafenvoy.hypextension.Event.ChatReceiveEvent.AutoFriend;
-import iafenvoy.hypextension.Event.ChatReceiveEvent.AutoGG;
-import iafenvoy.hypextension.Event.LifeCycle;
-import iafenvoy.hypextension.Event.LifeCycleEvent.AutoTip;
-import iafenvoy.hypextension.Searcher.Commands;
-import iafenvoy.hypextension.Utils.InputHandler;
-import iafenvoy.hypextension.Utils.ItemsUtil;
+import iafenvoy.hypextension.config.Configs;
+import iafenvoy.hypextension.ingame.function.AutoTip;
+import iafenvoy.hypextension.ingame.function.InputHandler;
+import iafenvoy.hypextension.searcher.Commands;
+import iafenvoy.hypextension.utils.ItemsUtil;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -35,14 +31,10 @@ public class HypClient implements ClientModInitializer {
         Configs.INSTANCE.load();
         InputEventHandler.getKeybindManager().registerKeybindProvider(InputHandler.INSTANCE);
         InputEventHandler.getInputManager().registerKeyboardInputHandler(InputHandler.INSTANCE);
+
+        AutoTip.start();
+
         ItemsUtil.registerProviders();
-
-        ChatReceive.register("autogg", AutoGG.INSTANCE);
-        ChatReceive.register("autofriend", AutoFriend.INSTANCE);
-
-        LifeCycle.register("autotip", AutoTip.INSTANCE);
-        LifeCycle.startLifeCycle();
-
         Commands.register();
     }
 }
