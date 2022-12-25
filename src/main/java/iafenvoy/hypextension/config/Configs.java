@@ -50,7 +50,7 @@ public class Configs implements IConfigHandler {
     public final OptionButton copyChatButton = new OptionButton("copyChatButton");
     // public final OptionButton headLevel = new OptionButton("headLevel"); //TODO
     // public final OptionButton timer = new OptionButton("timer");// TODO
-    // public final OptionButton timer = new OptionButton("lagDetect");// TODO
+     public final OptionButton lagDetect = new OptionButton("lagDetect");// TODO
     // public final OptionButton timer = new OptionButton("oldSneak");// TODO
     // public final OptionButton timer = new OptionButton("disableSwim");// TODO
     private final String OPTIONS_PATH = "./config/hypextension/options.json";

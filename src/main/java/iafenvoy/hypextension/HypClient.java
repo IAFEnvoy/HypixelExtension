@@ -5,6 +5,7 @@ import fi.dy.masa.malilib.event.InputEventHandler;
 import iafenvoy.hypextension.config.Configs;
 import iafenvoy.hypextension.ingame.function.AutoTip;
 import iafenvoy.hypextension.ingame.function.InputHandler;
+import iafenvoy.hypextension.ingame.function.KeepAliveDetect;
 import iafenvoy.hypextension.searcher.Commands;
 import iafenvoy.hypextension.utils.ItemsUtil;
 import net.fabricmc.api.ClientModInitializer;
@@ -33,6 +34,7 @@ public class HypClient implements ClientModInitializer {
         InputEventHandler.getInputManager().registerKeyboardInputHandler(InputHandler.INSTANCE);
 
         AutoTip.start();
+        KeepAliveDetect.start();
 
         ItemsUtil.registerProviders();
         Commands.register();

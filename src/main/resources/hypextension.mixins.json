@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "client": [
     "ChunkBuilder_BuiltChunkMixin",
+    "ClientPlayNetworkHandlerMixin",
     "KeyboardInputMixin",
     "block.ChestBlockMixin",
     "block.EnderChestBlockMixin",

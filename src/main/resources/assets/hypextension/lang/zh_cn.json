@@ -35,5 +35,7 @@
   "config.hypextension.scoreboardFix":"计分板右侧分数隐藏",
   "config.hypextension.copyChatButton":"复制聊天内容按钮",
   "config.hypextension.toolTipFix":"标签显示修复",
-  "hypextension.copyToClipboard": "复制到剪贴板"
+  "config.hypextension.lagDetect":"网络卡死检测",
+  "hypextension.copyToClipboard": "复制到剪贴板",
+  "hypextension.hasLag": "§c当前出现网络卡死"
 }
